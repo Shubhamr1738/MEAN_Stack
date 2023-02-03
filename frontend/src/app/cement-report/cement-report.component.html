@@ -1,0 +1,26 @@
+<div class="card mt-2"  >
+    <div class="card-body">
+        
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Opening Bal.</th>
+                <th scope="col">Cement Received</th>
+                <th scope="col">Total Stock</th>
+                <th scope="col">Consumption Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+            
+                <th scope="row"><input type="text" class="form-control" id="staticEmail"placeholder="Add Number" name="opnbal" [(ngModel)]="cr.opnbal"></th>
+                <td><input type="text" id="staticEmail" placeholder="Add Number" class="form-control" name="cmtrec" [(ngModel)]="cr.cmtrec"></td>
+                <td><input type="text" id="staticEmail"placeholder="Add Number" class="form-control" name="cmtrec" [(ngModel)]="cr.ttlstk"></td>
+                <td> <input type="text" id="staticEmail"placeholder="Add Number" class="form-control" name="consuption" [(ngModel)]="cr.consuption"></td>
+            
+              </tr> 
+            </tbody>
+          </table>
+          <button class="btn btn-primary" (click)="cementReport()">Save</button>
+  </div>
+  </div>

@@ -1,0 +1,30 @@
+<div class="card mt-2" >
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Material Received with Description</th>
+                <th scope="col">Supplier's Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Challan No</th>
+                <th scope="col">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+            
+                <th scope="row"><input type="text"class="form-control" id="staticEmail"placeholder="Type here"name="mtrdesc" [(ngModel)]="mr.mtrdesc"></th>
+                <td><input class="form-control" type="text" id="staticEmail" placeholder="Type here"name="supplyrname" [(ngModel)]="mr.supplyrname"></td>
+                <td><input class="form-control" type="text" id="staticEmail"placeholder="Type here"name="qty" [(ngModel)]="mr.qty"></td>
+                <td> <input class="form-control" type="text" id="staticEmail"placeholder="Type here"name="challan" [(ngModel)]="mr.challan"></td>
+                <td> <input class="form-control" type="text" id="staticEmail"placeholder="Type here"name="time" [(ngModel)]="mr.time"></td>
+              </tr>
+            
+            </tbody>
+   
+            <button class="btn btn-warning">Add More</button>
+          </table>
+          
+          <button class="btn btn-primary  ml-2" (click)="materialReport()">Save</button>
+  </div>
+  </div>
