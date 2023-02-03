@@ -1,0 +1,25 @@
+<div class="card mt-2" >
+      <div class="card-body">
+          
+              
+
+          <form>
+                <div >
+                  <div class="col-5">
+                      <label >Site :</label>
+                      <input type="text" class="form-control" id="staticEmail" class="form-control" name="site" [(ngModel)]="sites.site">
+                  </div>
+                  <div class="col-5">
+                      <label >Day :</label>
+                      <input type="text"  class="form-control" id="staticEmail" name="day"[(ngModel)]="sites.day">
+                  </div>
+                  <div class="col-5">
+                     
+                      <label >Date :</label>
+                      <input type="date" class="form-control" id="staticEmail" name="date"[(ngModel)]="sites.date">
+                  </div>
+                </div><br>
+                <button class="btn btn-primary" type="submit" (click)="saveSite()">Save</button>
+              </form>
+      </div>
+    </div>
