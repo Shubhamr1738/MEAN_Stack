@@ -23,18 +23,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    this.loginService.loginUserData(this.loginForm.value)
-    .pipe(
-      map(res => {
-          console.log(res);
-          // do something with successful response
-          this.router.navigate(['/home']);
-      }),
-      catchError(error => {
-          // do something with error
-          return throwError(error.error.message);
-      })
-    ).subscribe();
+    if(this.loginForm.invalid){
+      return;
+    }
+    this.loginService.loginUser(this.loginForm.value);
   }
 
 }
