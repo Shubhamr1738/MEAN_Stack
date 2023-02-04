@@ -34,16 +34,21 @@ export class LabourService {
     unskilled: labourData.unskilled,
     workDone: labourData.workDone
     });
-    return this.http.post(`${this.url}${"63d2cc152cf69cd8c0147924"}`, this.form.value, { headers });
+    return this.http.post(`${this.url}${"63de602374d05fae5badd84e"}`, this.form.value, { headers });
     }
 
     getallLabours(): Observable<any>{
-        return this.http.get('http://localhost:3000/getlabour/63d2cc152cf69cd8c0147924/')
+        return this.http.get('http://localhost:3000/glabour/63de602374d05fae5badd84e/')
       }
 
 
-      deletelabour(id:any):Observable<any>{
-        return this.http.delete(`${URL}/delete/${id}`)
+      deletelabour(id:number):Observable<any>{
+        console.log(id)
+        return this.http.delete(`${URL}/dlabour/${id}`)
       }
+      
+    updatelabour(id:number,body:LabourReport){
+      return this.http.put(`${URL}/ulabopur/${id}`,body)
+    }
     }
 
