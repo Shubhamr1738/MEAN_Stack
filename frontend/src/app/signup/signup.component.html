@@ -1,29 +1,41 @@
-<form [formGroup]="signupForm" (ngSubmit)="signupUser()">
-    <div class="form-group">
-      <label for="username">First Name:</label>
-      <input type="text" formControlName="firstName" class="form-control" id="firstname">
-    </div>
-    <div class="form-group">
-        <label for="username">Last Name:</label>
-        <input type="text" formControlName="lastName" class="form-control" id="lastname">
+<meta charset="UTF-8">
+    <meta name="viewport" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/assets/signup/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/assets/signup/css/style.css">
+
+<div class="container">
+  <div class="signup-content">
+      <div class="signup-form">
+          <h2 class="form-title">Sign up</h2>
+          <form [formGroup]="signupForm" (ngSubmit)="signupUser()">
+            <div class="form-group">
+                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input type="text" formControlName="firstName" id="firstname" placeholder="Full  Name">
+            </div>
+              <div class="form-group">
+                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                <input type="text" formControlName="email"  id="email" placeholder="Your Email">
+              </div>
+              <div class="form-group">
+                <label for="pass"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input type="text" formControlName="username"  id="username" placeholder="Your Username">
+              </div>
+              <div class="form-group">
+                <label for="site"><i class="zmdi zmdi-lock"></i></label>
+                <input type="password" formControlName="password"  id="password" >
+              </div>
+            <button type="submit" [disabled]="!signupForm.valid" class="form-submit">Register</button>
+          </form>
       </div>
-      <div class="form-group">
-        <label for="username">Email:</label>
-        <input type="text" formControlName="email" class="form-control" id="email">
+      <div class="signup-image">
+          <figure><img src="/assets/signup/images/signup-image.jpg" alt="sing up image"></figure>
+          <a href="#" class="signup-image-link">I am already member</a>
       </div>
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" formControlName="username" class="form-control" id="username">
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" formControlName="password" class="form-control" id="password">
-      </div>
-      <div class="form-group">
-        <label for="username">Site:</label>
-        <input type="text" formControlName="site" class="form-control" id="site">
-      </div>
-      
-    <button type="submit" [disabled]="!signupForm.valid" class="btn btn-primary">Register</button>
-  </form>
+  </div>
+</div>
   
