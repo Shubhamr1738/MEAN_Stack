@@ -7,7 +7,7 @@ import { AuthData } from '../models/auth-model';
   providedIn: 'root'
 })
 export class LoginService {
-  
+
   constructor(private http: HttpClient,private router:Router) { }
   private token:string;
 
