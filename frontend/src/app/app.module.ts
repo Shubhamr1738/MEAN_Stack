@@ -23,7 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AllreportsComponent } from './allreports/allreports.component';
 import { SiteComponent } from './site/site.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -57,7 +57,9 @@ import { SiteComponent } from './site/site.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
