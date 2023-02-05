@@ -39,7 +39,11 @@ export class LabourReportComponent implements OnInit {
       console.log(this.labourData)
       
     this.labourDataService.addLabourReports(this.labourData).subscribe(
-    res => console.log(res),
+    res => {console.log(res),this.labourDataService.getallLabours().subscribe(data => {
+
+      console.log(data);
+      this.dataSource=data.data;
+    });},
     err => console.log(err)
     );
     this.labourData= {
@@ -50,14 +54,36 @@ export class LabourReportComponent implements OnInit {
       unskilled: '',
       workDone: ''
   };
+  
     }
     delete(id:any){
+      console.log(id)
       this.labourDataService.deletelabour(id)
       .subscribe(
-        data => console.log(data),
+        
+        data => {console.log(data),this.labourDataService.getallLabours().subscribe(data => {
+
+          console.log(data);
+          this.dataSource=data.data;
+        });},
         error => console.error(error)
       );
       console.log("DELETED SUCCESSFULLY ")
-    }
+      
+     
+   
+    // this.labourDataService.deletelabour(id).subscribe(() => {
+    //   this.dataSource.data = this.dataSource.data.filter(
+    //     (u: LabourReport) => u.id !== id,
+    //   )
+    // })
 
+}
+removeSelectedRows(){
+
+}
+updatelabour(){
+  console.log("It Works")
+
+}
 }
