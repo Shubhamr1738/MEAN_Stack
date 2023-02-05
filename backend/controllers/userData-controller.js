@@ -5,8 +5,8 @@ const jwt =require('jsonwebtoken')
 exports.signupUserData = async (req, res,next) => {
     try {
       // Extracting user data from request body
-      const { firstName, lastName, username, email, password,site } = req.body;
-      if (!firstName || !lastName || !username || !email || !password|| !site) {
+      const { fullName, username, email, password } = req.body;
+      if (!fullName|| !username || !email || !password) {
         return res.status(400).json({ message: 'Missing required fields' });
       }    
       // Check if the user already exists
@@ -18,12 +18,10 @@ exports.signupUserData = async (req, res,next) => {
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       // Create new user
       const newUser = new UserData({
-        firstName,
-        lastName,
+        fullName,
         username,
         email,
         password:hashedPassword,
-        site,
       });
   
       // Save new user to the database
@@ -60,7 +58,7 @@ exports.signupUserData = async (req, res,next) => {
         const toekn = jwt.sign(
           {username:existingUser.username,userId:existingUser._id},
           'shinigami_stranger_69',
-          {expiresIn:"15d"}
+          {expiresIn:36000}
           );
         // Return success message
         res.status(200).json({ 

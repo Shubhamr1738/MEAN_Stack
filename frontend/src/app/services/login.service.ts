@@ -22,9 +22,10 @@ export class LoginService {
     this.http.post<{token:string,expiresIn:string}>('http://localhost:3000/user/login', authData)
     .subscribe({
       next:(response)=>{
+        console.log(response)
         const token=response.token;
         this.token=token;
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/home']);
       }
     })
   }

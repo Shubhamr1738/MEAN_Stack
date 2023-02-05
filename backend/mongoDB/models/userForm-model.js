@@ -3,11 +3,16 @@ const  mongoose = require('mongoose');
 const userFormSchema = new mongoose.Schema({
     site:{
         type:String,
+        required:true
     },
-    date:{
-        type:Date,
-        default: Date.now()
-    },
+    date: {
+        type: Date,
+        default: () => {
+          let date = new Date();
+          date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+          return date;
+        }
+      },
 labourReport:[{
     name: {
         type:String
