@@ -1,10 +1,11 @@
-//component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SignupService } from '../services/signup.service';
+import {SignupService} from "../services/signup.service"
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-signup',
@@ -12,15 +13,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  signupForm: FormGroup;
   
-  constructor(
-    private formBuilder: FormBuilder, 
-    private signupService: SignupService,
-    private router: Router
-  ) { 
-    this.signupForm = new FormGroup({});
-  }
+  signupForm:any
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router:Router) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -31,19 +26,24 @@ export class SignupComponent implements OnInit {
       site: ['', Validators.required],
       email: ['', Validators.required]
     });
+    
   }
 
   signupUser() {
-    console.log(this.signupForm.value);
+    console.log(this.signupForm.value)
     this.signupService.RegisterUserData(this.signupForm.value)
-      .pipe(
-        map(res => {
+    .pipe(
+      map(res => {
           console.log(res);
+          // do something with successful response
           this.router.navigate(['/admin']);
-        }),
-        catchError(error => {
+      }),
+      catchError(error => {
+          // do something with error
           return throwError(error.error.message);
-        })
-      ).subscribe();
+      })
+    ).subscribe();
   }
+
+
 }
