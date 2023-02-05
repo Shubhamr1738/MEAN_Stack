@@ -1,28 +1,104 @@
 
-<section class="vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card shadow-2-strong" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
+<section>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
+	
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+
   
-              <h3 class="mb-5">Login</h3>
-    
-                  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" >
-                    <div class="form-outline mb-4">
-                    <label for="username">Username:</label>
-                    <input type="text" formControlName="username" class="form-control" id="username">
-                  </div>
-                  <div class="form-outline mb-4">
-                    <label for="password">Password:</label>
-                    <input type="password" formControlName="password" class="form-control" id="password">
-                  </div>
-                  <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
-                </form>
-    
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+  
+  <div class="limiter">
+		<div class="container-login100" style="background-image: url('../assets/login/images/bg-01.jpg');">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+					<div class="login100-form-title">
+					<div class="login100-pic js-tilt" data-tilt>
+						<img style="height: 100px; width: 150px; border-radius: 55px;" src="../assets/login/images/img-01.png" alt="IMG" >
+					</div>
+					</div>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" formControlName="username" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" formControlName="password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+					<div class="contact100-form-checkbox">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<label class="label-checkbox100" for="ckb1">
+							Remember me
+						</label>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button [disabled]="!loginForm.valid" class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div>
+						<a class="txt1" href="#">
+							Forgot Password?
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+  <script ng-src="jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../assets/login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../assets/login/vendor/bootstrap/js/popper.js"></script>
+	<script src="../assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../assets/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../assets/login/vendor/daterangepicker/moment.min.js"></script>
+
+	<script src="../assets/login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../assets/login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script ng-src="js/main.js"></script>
+
+	<script ng-src="tilt/tilt.jquery.min.js"></script>
+
+<script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
   </section>
