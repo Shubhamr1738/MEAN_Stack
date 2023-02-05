@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+    console.log(this.loginForm)
     if(this.loginForm.invalid){
       return;
     }

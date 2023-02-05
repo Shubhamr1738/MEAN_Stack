@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
 export class LoginService {
   constructor(private http: HttpClient) { }
   loginUserData(data:any): Observable<any> {
+    console.log(data)
     return this.http.post<any>('http://localhost:3000/user/login', data);
+  }
+
+  public isloggedin(){
+    return true
   }
 }

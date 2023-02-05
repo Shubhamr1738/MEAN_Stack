@@ -66,6 +66,7 @@ exports.signupUserData = async (req, res,next) => {
         res.status(200).json({ 
           message: 'login successfully',
           toekn:toekn,
+          message: toekn,
           expiresIn:"15d"
         });
     } catch (error) {
