@@ -13,6 +13,7 @@ export class LabourService {
   private url = 'http://localhost:3000/addlabour/';
   private labourData: LabourReport[] = [];
   private labourDataUpdated = new Subject<LabourReport[]>();
+  private userId=localStorage.getItem('userId');
 
   constructor(private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute) { }
 
@@ -23,6 +24,7 @@ export class LabourService {
     unskilled: [''],
     workDone: ['']
     });
+
     
     addLabourReports(labourData: LabourReport) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -34,11 +36,12 @@ export class LabourService {
     unskilled: labourData.unskilled,
     workDone: labourData.workDone
     });
-    return this.http.post(`${this.url}${"63de602374d05fae5badd84e"}`, this.form.value, { headers });
+    console.log(this.userId)
+    return this.http.post(`${this.url}${"63dfc80477aac9456e405074"}`, this.form.value, { headers });
     }
 
     getallLabours(): Observable<any>{
-        return this.http.get('http://localhost:3000/glabour/63de602374d05fae5badd84e/')
+        return this.http.get('http://localhost:3000/glabour/63dfc80477aac9456e405074/')
       }
 
 

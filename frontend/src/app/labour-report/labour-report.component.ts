@@ -22,6 +22,7 @@ export class LabourReportComponent implements OnInit {
   site:any
   labourId:any
   
+  
   displayedColumns: string[] = ['demo-Name', 'demo-Skill', 'demo-Unskill', 'demo-Workdone','demo-delete'];
     
     constructor(private labourDataService: LabourService) { }
@@ -33,6 +34,7 @@ export class LabourReportComponent implements OnInit {
         console.log(data);
         this.dataSource=data.data;
       });
+      
     }
     
     addLabourReports() {
