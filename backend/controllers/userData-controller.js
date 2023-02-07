@@ -55,7 +55,7 @@ exports.signupUserData = async (req, res,next) => {
         if(!passwordMatch){
             return res.status(401).json({ message: 'Invalid password' });
         }
-        const toekn = jwt.sign(
+        const token = jwt.sign(
           {username:existingUser.username,userId:existingUser._id},
           'shinigami_stranger_69',
           {expiresIn:36000}
@@ -63,7 +63,9 @@ exports.signupUserData = async (req, res,next) => {
         // Return success message
         res.status(200).json({ 
           message: 'login successfully',
-          toekn:toekn,
+          token:token,
+          id:existingUser._id,
+          message: (existingUser._id,token),
           expiresIn:"15d"
         });
     } catch (error) {
