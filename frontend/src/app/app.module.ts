@@ -24,6 +24,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { AllreportsComponent } from './allreports/allreports.component';
 import { SiteComponent } from './site/site.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon'
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatTableModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
     
   ],
   providers: [],

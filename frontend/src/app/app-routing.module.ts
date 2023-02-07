@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { ReportsComponent } from './reports/reports.component';
 import { SignupComponent } from './signup/signup.component';
 import { SiteComponent } from './site/site.component';
+import { NormalguardGuard } from './services/security/normalguard.guard';
+import { AdminGuard } from './services/security/admin.guard';
 
 const routes: Routes = [
   {
@@ -17,22 +19,26 @@ const routes: Routes = [
   {
     path:'admin',
     component:AdminComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[AdminGuard]
   },
   {
     path:'home',
     component:HomeComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[NormalguardGuard]
   },
   {
     path:'reports',
     component:ReportsComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[NormalguardGuard]
   },
   {
     path:'signup',
     component:SignupComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[AdminGuard]
   },
   
   {
@@ -43,12 +49,14 @@ const routes: Routes = [
   {
     path:'allreports',
     component:AllreportsComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[NormalguardGuard]
   },
   {
     path:'site',
     component:SiteComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[NormalguardGuard]
   },
   
 ];
