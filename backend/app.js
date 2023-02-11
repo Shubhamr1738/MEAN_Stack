@@ -1,16 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('./mongoDB/connection/db.js');
-const userDataRoutes = require('./routes/userData-routes.js');
-const userFormRoutes = require('./routes/userForm-routes.js');
-
-
+const mongoose = require("./mongodb/db");
+const userDataRoute = require("./routes/userData_routes");
+const userFormRoute = require("./routes/userForm_routes");
 
 const app = express();
 app.use(bodyParser.json());
 
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({origin: 'http://localhost:4200' }));
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -25,9 +23,9 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.use('/user', userDataRoutes);
-  app.use('', userFormRoutes);
+  app.use('/user',userDataRoute);
+  app.use('/form',userFormRoute);
 
-app.listen(3000, () => {
-    console.log(`Server started on port 3000`);
-});
+  app.listen(3000,()=>{
+    console.log('Server Started on port 3000');
+  });

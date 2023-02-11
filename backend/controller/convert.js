@@ -1,7 +1,7 @@
 const exceljs = require('exceljs');
 const fs = require('fs');
-const UserForm = require('../mongoDB/models/userForm-model');
-const mongoose = require('../mongoDB/connection/db');
+const UserForm = require('../mongodb/models/userForm_model');
+const mongoose = require('../mongodb/db');
 const filePath = './UserForm.xlsx';
 const workbook = new exceljs.Workbook();
 const worksheet = workbook.addWorksheet('UserForm');
@@ -45,7 +45,6 @@ documents.forEach(document => {
   let labourReport = document.labourReport[0];
   let cementReport = document.cementReports;
   let materialReport = document.materialReport;
-
   worksheet.addRow({
     site: document.site,
     date: document.date,
