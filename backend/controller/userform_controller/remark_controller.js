@@ -55,3 +55,22 @@ exports.updateRemarks = async (req, res) => {
         return res.status(500).send(err);
     }
 };
+
+exports.pendingdate = (req, res) => {
+    UserForm.find({}).sort({date: 'desc'}).limit(1).exec((err, latestForm) => {
+        if (err) {
+            return res.status(500).json({error: err.message});
+        }
+        else {
+            let previousDate = new Date(latestForm[0].date);
+            previousDate.setDate(previousDate.getDate() + 1);
+            let today = new Date();
+            let dateArray = [];
+            while (previousDate <= today) {
+                dateArray.push(new Date(previousDate));
+                previousDate.setDate(previousDate.getDate() + 1);
+            }
+            return res.status(200).json({dates: dateArray});
+        }
+    });
+};
