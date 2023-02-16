@@ -54,4 +54,5 @@ router.post("/addremarks/:id",remarks.addRemarks);
 router.delete("/deleteremark/:id",remarks.deleteRemarks);
 router.put("/updateremarks/:id",remarks.updateRemarks);
 router.get("/convert",convert.convert)
+router.get("/pending",remarks.pendingdate);
 module.exports = router;
