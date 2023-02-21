@@ -12,12 +12,9 @@ const userFormSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: () => {
-            let date = new Date();
-            date = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-            return date;
-        }
+        required : true
     },
+
     cementReports: {
         openingBalance: {
             type: Number

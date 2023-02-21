@@ -3,13 +3,16 @@ const UserForm = require("../../mongodb/models/userForm_model")
 
 exports.addSite = async (req, res) => {
     try {
-        const newSite = new UserForm({username:req.params.username, site: req.body.site });
+        const { site, date } = req.body;
+        const newSite = new UserForm({ username: req.params.username, site, date: new Date(date) });
         await newSite.save();
         res.status(200).send({ message: 'Site added successfully', site: newSite, siteid: newSite._id });
     } catch (err) {
         res.status(500).send(err);
     }
 };
+
+
 
 
 exports.getSiteById = (req, res) => {
@@ -53,9 +56,31 @@ exports.updateSite = (req, res) => {
 };
 
 exports.getAllData = (req, res) => {
-    UserForm.find({}, (err, data) => {
-        if (err) return res.status(400).send(err);
-        res.send(data);
+    const pageSize = +req.query.pagesize;
+    const currentPage = +req.query.page;
+    const dataQuery = UserForm.find();
+  
+    if (pageSize && currentPage) {
+      dataQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
+    }
+  
+    dataQuery.exec((err, data) => {
+      if (err) {
+        return res.status(400).send(err);
+      }
+      UserForm.countDocuments().exec((countErr, count) => {
+        if (countErr) {
+          return res.status(400).send(countErr);
+        }
+        res.status(200).json({
+          message: "Data fetched successfully!",
+          data: data,
+          totalData: count,
+          currentPage: currentPage,
+          pageSize: pageSize,
+        });
+      });
     });
-};
+  };
+  
 
