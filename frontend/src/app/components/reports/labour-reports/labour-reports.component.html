@@ -1,0 +1,105 @@
+<!-- <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Skilled</th>
+        <th scope="col">Un-Skilled</th>
+        <th scope="col">Work Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>                 
+        <th scope="row"><input type="text" class="form-control" id="name" [(ngModel)]="labourData.nameofagency name="nameofagency"></th>
+        <th scope="row"><input type="text" class="form-control" id="name" [(ngModel)]="labourData.typeofagency name="typeofagency"></th>
+        <td><input type="text" class="form-control" id="skilled" [(ngModel)]="labourData.skilled" name="skilled"></td>
+        <td><input type="text" class="form-control" id="unskilled" [(ngModel)]="labourData.unskilled" name="unskilled"></td>
+        <td> <textarea type="text" class="form-control" id="workDone" [(ngModel)]="labourData.workDone" name="workDone"></textarea></td> 
+        
+      </tr>
+      <button type="button" class="btn btn-primary" (click)="addLabourReports()">Add More</button>
+    
+    </tbody>
+    
+  </table> -->
+
+
+  <form [formGroup]="labours" (ngSubmit)="addLabourReports()" >
+    <div class="form-group">
+      <label>Name of Agency</label>
+      <input type="text" class="form-control" placeholder="name of agency"  formControlName="nameOfAgency">
+    </div>
+    <div class="form-group">
+      <label>Type of Agency</label>
+      <input type="text" class="form-control"  placeholder="type of agency" formControlName="typeOfAgency">
+    </div>
+    <div class="form-group">
+      <label>Skilled</label>
+      <input type="text" class="form-control"  placeholder="type skilled workers" formControlName="skilled">
+    </div>
+    <div class="form-group">
+      <label>Un skilled</label>
+      <input type="text" class="form-control"  placeholder="type unskilled workers" formControlName="unskilled">
+    </div>
+    <div class="form-group">
+      <label>Workdone</label>
+      <textarea type="text" class="form-control"  placeholder="Workdone" formControlName="workDone"></textarea><br>
+    </div>
+   
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+<br>
+
+  
+  
+  <h1>Added Labours</h1>
+  
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        
+      <ng-container matColumnDef="demo-nameofagency">
+        <th mat-header-cell *matHeaderCellDef> Name of Agency </th>
+        <td mat-cell *matCellDef="let element"> {{element.nameOfAgency}} </td>
+      </ng-container>
+      <ng-container matColumnDef="demo-typeofagency">
+        <th mat-header-cell *matHeaderCellDef> Type of Agency </th>
+        <td mat-cell *matCellDef="let element"> {{element.typeOfAgency}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-Skill">
+        <th mat-header-cell *matHeaderCellDef> Skilled </th>
+        <td mat-cell *matCellDef="let element"> {{element.skilled}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-Unskill">
+        <th mat-header-cell *matHeaderCellDef> Unskill </th>
+        <td mat-cell *matCellDef="let element"> {{element.unskilled}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-Workdone">
+        <th mat-header-cell *matHeaderCellDef> Workdone </th>
+        <td mat-cell *matCellDef="let element"> {{element.workDone}} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="demo-delete">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        
+        <td mat-cell *matCellDef="let element"> <button class="btn btn-danger"(click)=delete(element._id)>Delete</button>&nbsp;
+          <button class="btn btn-success"  >Update</button> </td>
+        
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+    </table>
+
+<!-- update popup -->

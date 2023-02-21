@@ -1,0 +1,7 @@
+<form  [formGroup]="remarks" (ngSubmit)="addRemarks()">
+    <div class="form-group">
+        <label>Remarks</label>
+        <textarea type="text" class="form-control"   formControlName="remarks"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+</form>

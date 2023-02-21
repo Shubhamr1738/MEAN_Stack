@@ -1,0 +1,110 @@
+
+  <form [formGroup]="materials" (ngSubmit)="addMaterials()" >
+    <div class="form-group">
+      <label>Material Received</label>
+      <input type="number" class="form-control"   formControlName="materialReceived">
+    </div>
+    
+    <div class="form-group" >
+        <label>Supplier Name </label>
+     
+        <input type="text" class="form-control" formControlName="supplierName">
+        
+    </div>
+    <div class="form-group">
+      <label>Quantity</label>
+      <input type="text" class="form-control"formControlName="quality">
+    </div>
+    <div class="form-group">
+      <label>Bill No</label>
+      <input type="text" class="form-control"formControlName="billNo">
+    </div>
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" class="form-control" formControlName="amount"><br>
+    </div>
+      <br>
+    <label>Paid</label>
+    <div class="form-group mt-2 ml-2">
+      <label>
+        <input type="radio" value="Yes" formControlName="paid">
+          <span>Yes</span>
+      </label>&nbsp;&nbsp;
+
+      <label>
+        <input type="radio" value="No" formControlName="paid">
+          <span>No</span>
+      </label>
+    </div><br>
+
+      <div class="form-group">
+        <label>Time</label>
+        <input type="text" class="form-control" formControlName="time"><br>
+      </div>
+   
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+
+
+
+  
+  <h1>Added Materials </h1>
+  
+  
+    <table mat-table [dataSource]="materialDataSource" class="mat-elevation-z8 demo-table">
+        
+      <ng-container matColumnDef="demo-materialReceived">
+        <th mat-header-cell *matHeaderCellDef> materialReceived </th>
+        <td mat-cell *matCellDef="let element"> {{element.materialReceived}} </td>
+      </ng-container>
+      <ng-container matColumnDef="demo-supplierName">
+        <th mat-header-cell *matHeaderCellDef> supplierName </th>
+        <td mat-cell *matCellDef="let element"> {{element.supplierName}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-quality">
+        <th mat-header-cell *matHeaderCellDef> quality </th>
+        <td mat-cell *matCellDef="let element"> {{element.quality}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-billNo">
+        <th mat-header-cell *matHeaderCellDef> billNo </th>
+        <td mat-cell *matCellDef="let element"> {{element.billNo}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="demo-amount">
+        <th mat-header-cell *matHeaderCellDef> amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-paid">
+        <th mat-header-cell *matHeaderCellDef> paid </th>
+        <td mat-cell *matCellDef="let element"> {{element.paid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="demo-time">
+        <th mat-header-cell *matHeaderCellDef> time </th>
+        <td mat-cell *matCellDef="let element"> {{element.time | date: 'yyyy-MM-dd' }} </td>
+      </ng-container>
+      
+      
+      <ng-container matColumnDef="demo-action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        
+        <td mat-cell *matCellDef="let element"> <button class="btn btn-danger"(click)=delete(element._id)>Delete</button>&nbsp;
+         </td>
+        
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        (click)="clickedRows.add(row)"
+        [class.demo-row-is-clicked]="clickedRows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+    </table>

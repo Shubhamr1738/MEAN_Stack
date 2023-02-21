@@ -1,0 +1,67 @@
+
+  <form [formGroup]="materialsconsuption" (ngSubmit)="addMaterialConsuption()" >
+    <div class="form-group">
+      <label>Activity Name</label>
+      <input type="text" class="form-control"   formControlName="activityName">
+    </div>
+    
+    <div class="form-group" >
+        <label>Consumption Material </label>
+     
+        <input type="text" class="form-control" formControlName="consumptionMaterial">
+        
+    </div>
+    <div class="form-group">
+      <label>Consuption Quantity</label>
+      <input type="number" class="form-control"formControlName="consumptionQuantity">
+    </div>
+    <div class="form-group">
+      <label>Consuption Unit</label>
+      <input type="text" class="form-control"formControlName="consumptionUnit">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+
+
+  
+  <table mat-table [dataSource]="materialConsuptionData" class="mat-elevation-z8 demo-table">
+        
+    <ng-container matColumnDef="demo-activityName">
+      <th mat-header-cell *matHeaderCellDef> Acivity Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.activityName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="demo-consumptionMaterial">
+      <th mat-header-cell *matHeaderCellDef> Consumption Material </th>
+      <td mat-cell *matCellDef="let element"> {{element.consumptionMaterial}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="demo-consumptionQuantity">
+      <th mat-header-cell *matHeaderCellDef> Consumption Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.consumptionQuantity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="demo-consumptionUnit">
+      <th mat-header-cell *matHeaderCellDef> Consumption Unit </th>
+      <td mat-cell *matCellDef="let element"> {{element.consumptionUnit}} </td>
+    </ng-container>
+   
+    
+    <ng-container matColumnDef="demo-action">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      
+      <td mat-cell *matCellDef="let element"> <button class="btn btn-danger"(click)=deleteMaterialConsuptionData(element._id)>Delete</button>&nbsp;
+       </td>
+      
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      (click)="clickedRows.add(row)"
+      [class.demo-row-is-clicked]="clickedRows.has(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+  </table>
