@@ -1,0 +1,59 @@
+
+  <form [formGroup]="cement" (ngSubmit)="addCement()" >
+    <div class="form-group">
+      <label>Opening Balance</label>
+      <input type="number" class="form-control"   formControlName="openingBalance">
+    </div><br>
+    <label>Cement Received</label>
+    <div class="form-group mt-2 ml-2">
+      <label>
+        <input type="radio" value="Yes" formControlName="cementReceived">
+          <span>Yes</span>
+      </label>&nbsp;&nbsp;
+      <label>
+        <input type="radio" value="No" formControlName="cementReceived">
+          <span>No</span>
+      </label>
+    </div><br>
+    <div class="form-group">
+      <label>Total Stack</label>
+      <input type="number" class="form-control"formControlName="totalStock">
+    </div>
+    <div class="form-group">
+      <label>Consuption Today</label>
+      <input type="number" class="form-control"formControlName="consumptionToday">
+    </div>
+    <div class="form-group">
+      <label>Closing Balance</label>
+      <input type="number" class="form-control" formControlName="closingBalance"><br>
+    </div>
+   
+    
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+
+
+  <button class="btn btn-primary" (click)="showData()">showData </button>
+
+
+  <div *ngIf="show">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col"> openingBalance</th>
+    <th scope="col"> cementReceived</th>
+    <th scope="col">totalStack</th>
+    <th scope="col">consuptionToday</th>
+    <th scope="col">closingBalance</th>
+  </tr>
+  </thead>
+  <tr>
+  <td scope="row">{{cementData.openingBalance}}</td>
+  <td>{{cementData.cementReceived}}</td>
+ <td>{{cementData.totalStock}}</td>
+  <td>{{cementData.consumptionToday}}</td>
+ <td>{{cementData.closingBalance}}</td></tr>
+</table>
+
+  </div> 

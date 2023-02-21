@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { AllreportsComponent } from './allreports/allreports.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { ReportsComponent } from './reports/reports.component';
-import { SignupComponent } from './signup/signup.component';
-import { SiteComponent } from './site/site.component';
-import { NormalguardGuard } from './services/security/normalguard.guard';
-import { AdminGuard } from './services/security/admin.guard';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { ReportComponent } from './components/reports/report/report.component';
+import { HomeComponent } from './components/home/home/home.component';
+import { SiteComponent } from './components/reports/site/site.component';
+import { AllReportsComponent } from './components/reports/all-reports/all-reports.component';
+import { LabourReport } from './components/reports/models/labour';
+import { CementReportsComponent } from './components/reports/cement-reports/cement-reports.component';
+import { ReportsHomeComponent } from './components/reports/reports-home/reports-home.component';
+
 
 const routes: Routes = [
   {
@@ -17,48 +19,61 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'admin',
-    component:AdminComponent,
-    pathMatch:'full',
-    canActivate:[AdminGuard]
+    path:'allreports',
+    component:AllReportsComponent,
+    pathMatch:'full'
   },
   {
-    path:'home',
-    component:HomeComponent,
-    pathMatch:'full',
-    canActivate:[NormalguardGuard]
+    path:'reports/:siteId',
+    component:ReportComponent,
   },
-  {
-    path:'reports',
-    component:ReportsComponent,
-    pathMatch:'full',
-    canActivate:[NormalguardGuard]
-  },
-  {
-    path:'signup',
-    component:SignupComponent,
-    pathMatch:'full',
-    canActivate:[AdminGuard]
-  },
-  
+    // {
+    //   path:'labourReport',
+    // component:LabourReport,
+    // },
+    // {
+    //   path:'cementReport',
+    // component:CementReportsComponent,
+    // },
+    {
+      path:'reports',
+      component:ReportComponent,
+    },
+    {
+      path:'reportshome',
+      component:ReportsHomeComponent,
+    },
+
   {
     path:'login',
     component:LoginComponent,
     pathMatch:'full'
   },
   {
-    path:'allreports',
-    component:AllreportsComponent,
-    pathMatch:'full',
-    canActivate:[NormalguardGuard]
+    path:'signup',
+    component:SignupComponent,
+    pathMatch:'full'
   },
   {
     path:'site',
     component:SiteComponent,
-    pathMatch:'full',
-    canActivate:[NormalguardGuard]
+    pathMatch:'full'
   },
-  
+  {
+    path:'admin',
+    component:AdminDashboardComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'reports',
+    component:ReportComponent,
+    pathMatch:'full'
+  },
+  {
+    path:'home',
+    component:HomeComponent,
+    pathMatch:'full'
+  },
 ];
 
 @NgModule({

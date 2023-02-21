@@ -1,0 +1,113 @@
+
+<div class="container">
+    
+
+    <mat-card>
+        <mat-card-content>
+            <!-- <table mat-table [dataSource]="data" class="mat-elevation-z8">
+                <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+                  <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+                  <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+              </table> -->
+
+
+              <!-- <table>
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>Email</th>
+                     <th>Username</th>
+                   <th>Password</th>
+                     <th>Site</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dataSource;">
+                    <td>{{ item.firstName}}</td>
+                   <td>{{ item.lastName}}</td>
+                     <td>{{ item.email }}</td>
+                    <td>{{ item.username }}</td>
+                   <td>{{ item.password }}</td>
+                     <td>{{ item.site }}</td>
+                  </tr>
+                </tbody>
+              </table>  -->
+           <button class="btn btn-primary" routerLink="/signup">add User</button>&nbsp;
+           <!-- <button class="btn btn-primary" routerLink="/site">Add Sites</button> -->
+            
+              
+              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5">
+              
+                <ng-container matColumnDef="demo-fullname">
+                  <th mat-header-cell *matHeaderCellDef>Full Name</th>
+                  <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                  
+                </ng-container>
+              
+                <ng-container matColumnDef="demo-email">
+                  <th mat-header-cell *matHeaderCellDef> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+                
+                <ng-container matColumnDef="demo-username">
+                  <th mat-header-cell *matHeaderCellDef> Username</th>
+                  <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                </ng-container>
+              
+               
+                <ng-container matColumnDef="demo-password">
+                  <th mat-header-cell *matHeaderCellDef> Password</th>
+                  <td mat-cell *matCellDef="let element"> ....... </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="demo-role">
+                  <th mat-header-cell *matHeaderCellDef>Role</th>
+                  <td mat-cell *matCellDef="let element">{{element.role}}</td>
+                </ng-container>
+                
+                <ng-container matColumnDef="demo-delete">
+                  <th mat-header-cell *matHeaderCellDef > Delete User </th>
+                  <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success">Update</button> </td>
+                  
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              
+              
+            
+        </mat-card-content>
+    </mat-card>
+</div>       
+                    
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Open Modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

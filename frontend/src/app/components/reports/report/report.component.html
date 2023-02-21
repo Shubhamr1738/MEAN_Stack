@@ -1,0 +1,58 @@
+<div class="container mt-5">    
+    <mat-tab-group>
+        <mat-tab>   
+          <ng-template mat-tab-label>
+          
+           <h3>LABOUR REPORT</h3> 
+          </ng-template>
+          <app-labour-reports [SiteID]="SiteID"></app-labour-reports>
+        
+    
+    
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <h3>CEMENT REPORT</h3>
+          </ng-template>
+          <app-cement-reports [SiteID]="SiteID"></app-cement-reports>
+          
+    
+        </mat-tab>
+      
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <h3>MATERIAL  REPORT</h3>
+          </ng-template>
+          <app-material-reports [SiteID]="SiteID"></app-material-reports>
+    
+        </mat-tab>
+    
+     
+    
+    <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>MATERIAL CONSUMPTION REPORT</h3>
+        </ng-template>
+        <app-material-consumption [SiteID]="SiteID"></app-material-consumption>
+           
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>REMARKS</h3>
+        </ng-template>
+        <app-remarks-reports [SiteID]="SiteID"></app-remarks-reports>
+           
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <h3>CONFIRM DETAILS</h3>
+        </ng-template>
+      
+           <button class="btn btn-primary">Submit</button>
+      </mat-tab>
+    </mat-tab-group>
+</div>
+<!-- 
+<h1 routerLink="labourReport">labourReport</h1>
+<h1 routerLink="cementReport">cementReport</h1> -->
