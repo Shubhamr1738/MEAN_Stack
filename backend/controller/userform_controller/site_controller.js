@@ -82,5 +82,17 @@ exports.getAllData = (req, res) => {
       });
     });
   };
-  
+  exports.getSiteByusername  = async (req, res) => {
+    const { username } = req.params;
+    try {
+      const data = await UserForm.find({ username });
+      if (!data || data.length === 0) {
+        return res.status(404).json({ message: 'Data not found' });
+      }
+      res.status(200).json({ data });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Failed to retrieve data' });
+    }
+  };
 

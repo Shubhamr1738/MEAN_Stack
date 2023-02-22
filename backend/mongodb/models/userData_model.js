@@ -24,8 +24,25 @@ const userDataSchema = new mongoose.Schema({
     },
     role: {
         type: [String],
-        enum: ['user', 'admin'],
+        enum: ['user', 'admin','manager'],
         default: 'user'
+    },
+    site: [{
+        siteName:{
+            type:String,
+            require:true,
+        },
+        createdAt:{
+            type:Date,
+            default:Date.now()
+        },
+        siteCompleted:{
+            type:Boolean,
+            default:false
+        }
+    }],
+    companyName:{
+        type:String
     }
 });
 
