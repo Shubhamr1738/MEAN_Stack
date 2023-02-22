@@ -47,8 +47,7 @@ exports.addLabourReports = async (req, res) => {
         if (!UserForm) {
           return res.status(404).send("Site not found");
         }
-        console.log(UserForm.labourReport.length);
-        res.send(UserForm.labourReport);
+          res.send(UserForm.labourReport);
       }
     );
   };

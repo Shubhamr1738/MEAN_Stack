@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const userFormSchema = new mongoose.Schema({
-    site: {
-        type: String,
-        required: true
-    },
+   site:{
+        type:String,
+        require:true
+   },
     username: {
         type: String,
         ref: 'UserData',
@@ -12,7 +12,8 @@ const userFormSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required : true
+        required : true,
+        unique:true
     },
 
     cementReports: {
@@ -92,6 +93,11 @@ const userFormSchema = new mongoose.Schema({
     ],
     remarks: {
         type: String
+    },
+    dailyStatus:{
+        type:Boolean,
+        require:true,
+        default:false
     }
 });
 

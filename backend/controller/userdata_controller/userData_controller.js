@@ -1,4 +1,4 @@
-const UserData = require("../mongodb/models/userData_model");
+const UserData = require("../../mongodb/models/userData_model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -175,7 +175,5 @@ exports.findUserByUsername = async (req, res, next) => {
         res.status(500).json({ message: 'Error finding user', error });
     }
 };
-
-
 
 

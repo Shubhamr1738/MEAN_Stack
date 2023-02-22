@@ -76,34 +76,26 @@ exports.pendingdate = (req, res) => {
 };
 */
 exports.pendingdate = (req, res) => {
-    // Get the start date of the current month
-    let currentDate = new Date();
-    let startDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-  
-    // Find all UserForms between the start date of the current month and the current date
-    UserForm.find({
-        date: {
-            $gte: startDate,
-            $lte: currentDate
-        }
-    }, (err, forms) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
+    let startOfMonth = new Date();
+    startOfMonth.setDate(1);
+    startOfMonth.setHours(0, 0, 0, 0);
 
-        // Create an array of unavailable dates
-        let unavailableDates = forms.map(form => new Date(form.date).setHours(0,0,0,0));
-      
-        // Create an array of all dates between the start date of the current month and the current date, excluding the unavailable dates
-        let dateArray = [];
-        let currentDateCopy = new Date(startDate);
-        while (currentDateCopy <= currentDate) {
-            if (!unavailableDates.includes(currentDateCopy.setHours(0,0,0,0))) {
-                dateArray.push(new Date(currentDateCopy));
+    UserForm.find({date: {$gte: startOfMonth}}).select('date -_id').exec((err, forms) => {
+        if (err) {
+            return res.status(500).json({error: err.message});
+        } else {
+            let availableDates = forms.map(form => new Date(form.date).toISOString().substring(0, 10));
+            let currentDate = new Date().toISOString().substring(0, 10);
+            let unavailableDates = [];
+
+            for (let d = startOfMonth; d <= new Date(); d.setDate(d.getDate() + 1)) {
+                let dateString = d.toISOString().substring(0, 10);
+                if (!availableDates.includes(dateString) && dateString !== currentDate) {
+                    unavailableDates.push(dateString);
+                }
             }
-            currentDateCopy.setDate(currentDateCopy.getDate() + 1);
+
+            return res.status(200).json({dates: unavailableDates});
         }
-      
-        return res.status(200).json({ dates: dateArray });
     });
-};
+}
