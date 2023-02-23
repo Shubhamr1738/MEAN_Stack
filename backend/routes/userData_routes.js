@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userdata = require("../controller/userdata_controller/userData_controller.js")
 const sitedata = require("../controller/userdata_controller/siteData_controller.js");
+const companyName = require("../controller/userdata_controller/companyData_controller")
 const { route } = require("./userForm_routes.js");
 
 
@@ -22,4 +23,10 @@ router.post("/:userid/addsitedata",sitedata.addsiteData);
 router.delete("/:userid/deletesitedata/:sitedataid",sitedata.deletesiteData);
 router.put("/:userid/updatesitedata/:sitedataid",sitedata.updatesiteData);
 router.get("/getsitedata/:userid",sitedata.getsiteData);
+
+//<*****************/---------------- companyName ---------------------/*************> 
+router.post("/:userid/addcompanyname",companyName.addCompanyName);
+router.get("/:userid/getcompanyname",companyName.getCompanyName);
+router.delete("/:userid/deletecompanyname",companyName.deleteCompanyName);
+
 module.exports = router;
