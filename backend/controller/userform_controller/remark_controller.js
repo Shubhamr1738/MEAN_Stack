@@ -55,30 +55,14 @@ exports.updateRemarks = async (req, res) => {
         return res.status(500).send(err);
     }
 };
-/*
-exports.pendingdate = (req, res) => {
-    UserForm.find({}).sort({date: 'desc'}).limit(1).exec((err, latestForm) => {
-        if (err) {
-            return res.status(500).json({error: err.message});
-        }
-        else {
-            let previousDate = new Date(latestForm[0].date);
-            previousDate.setDate(previousDate.getDate() + 1);
-            let today = new Date();
-            let dateArray = [];
-            while (previousDate <= today) {
-                dateArray.push(new Date(previousDate));
-                previousDate.setDate(previousDate.getDate() + 1);
-            }
-            return res.status(200).json({dates: dateArray});
-        }
-    });
-};
-*/
+
+
 exports.pendingdate = (req, res) => {
     let startOfMonth = new Date();
     startOfMonth.setDate(1);
-    startOfMonth.setHours(0, 0, 0, 0);
+    startOfMonth.setUTCHours(0, 0, 0, 0);
+    startOfMonth.setUTCMonth(new Date().getUTCMonth());
+    startOfMonth.setUTCFullYear(new Date().getUTCFullYear());
 
     UserForm.find({date: {$gte: startOfMonth}}).select('date -_id').exec((err, forms) => {
         if (err) {
@@ -88,9 +72,9 @@ exports.pendingdate = (req, res) => {
             let currentDate = new Date().toISOString().substring(0, 10);
             let unavailableDates = [];
 
-            for (let d = startOfMonth; d <= new Date(); d.setDate(d.getDate() + 1)) {
+            for (let d = startOfMonth; d <= new Date(); d.setUTCDate(d.getUTCDate() + 1)) {
                 let dateString = d.toISOString().substring(0, 10);
-                if (!availableDates.includes(dateString) && dateString !== currentDate) {
+                if (!availableDates.includes(dateString)) {
                     unavailableDates.push(dateString);
                 }
             }
@@ -99,3 +83,6 @@ exports.pendingdate = (req, res) => {
         }
     });
 }
+
+
+

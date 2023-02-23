@@ -1,0 +1,27 @@
+companyData_controller
+
+addCompanyName : to add/update companyName
+getCompanyName : to get companyname
+deleteCompanyName : to delete companyname
+
+
+siteData_controller
+
+addsiteData : to add siteData
+deletesiteData : to delete siteData
+updatesiteData : to update siteData
+getsiteData : to get siteData
+
+
+userData_controller
+
+signupUserData : to add userData
+loginUserData : to login userData
+getAllUsers : to get all userData
+deleteUserData : to delete userData
+updateUserData : to update userData
+updatePassword : to update userData password
+findUserByUsername : to find userData by username
+getusersbyrole : to get userData by role and companyName
+
+
