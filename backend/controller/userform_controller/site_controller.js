@@ -82,6 +82,7 @@ exports.getAllData = (req, res) => {
       });
     });
   };
+  
   exports.getSiteByusername  = async (req, res) => {
     const { username } = req.params;
     try {

@@ -16,6 +16,7 @@ router.delete("/deleteuser/:id",userdata.deleteUserData);
 router.put("/updateuser/:id",userdata.updateUserData);
 router.patch("/updatepassword/:id",userdata.updatePassword);
 router.get("/finduser/:name",userdata.findUserByUsername);
+router.get("/getusersbyrole/:role/:companyName",userdata.getusersbyrole);
 
 //<*****************/---------------- siteData ---------------------/*************> 
 

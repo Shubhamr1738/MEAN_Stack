@@ -177,3 +177,15 @@ exports.findUserByUsername = async (req, res, next) => {
 };
 
 
+exports.getusersbyrole = (req, res) => {
+    const { role, companyName } = req.params;
+  
+    UserData.find({ role, companyName }, (err, userData) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Internal server error');
+      } else {
+        res.json(userData);
+      }
+    });
+  };
