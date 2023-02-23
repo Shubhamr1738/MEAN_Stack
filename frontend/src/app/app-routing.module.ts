@@ -4,12 +4,16 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { ReportComponent } from './components/reports/report/report.component';
-import { HomeComponent } from './components/home/home/home.component';
+import { HomeComponent } from './components/user/home/home/home.component'; 
 import { SiteComponent } from './components/reports/site/site.component';
 import { AllReportsComponent } from './components/reports/all-reports/all-reports.component';
 import { LabourReport } from './components/reports/models/labour';
 import { CementReportsComponent } from './components/reports/cement-reports/cement-reports.component';
 import { ReportsHomeComponent } from './components/reports/reports-home/reports-home.component';
+import { NavBarComponent } from './components/user/home/nav-bar/nav-bar.component';
+import { AdminNavBarComponent } from './components/admin/admin-nav-bar/admin-nav-bar.component';
+import { ManagerHomeComponent } from './components/manager/manager-home/manager-home.component';
+import { ManagerSitesComponent } from './components/manager/manager-sites/manager-sites.component';
 
 
 const routes: Routes = [
@@ -18,6 +22,7 @@ const routes: Routes = [
     component:LoginComponent,
     pathMatch:'full'
   },
+ 
   {
     path:'allreports',
     component:AllReportsComponent,
@@ -27,14 +32,8 @@ const routes: Routes = [
     path:'reports/:siteId',
     component:ReportComponent,
   },
-    // {
-    //   path:'labourReport',
-    // component:LabourReport,
-    // },
-    // {
-    //   path:'cementReport',
-    // component:CementReportsComponent,
-    // },
+  {path:'adminnav',
+  component:AdminNavBarComponent},
     {
       path:'reports',
       component:ReportComponent,
@@ -59,6 +58,8 @@ const routes: Routes = [
     component:SiteComponent,
     pathMatch:'full'
   },
+  {path:'managesite',
+component:ManagerSitesComponent},
   {
     path:'admin',
     component:AdminDashboardComponent,
@@ -74,6 +75,7 @@ const routes: Routes = [
     component:HomeComponent,
     pathMatch:'full'
   },
+
 ];
 
 @NgModule({

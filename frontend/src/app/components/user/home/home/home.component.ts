@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from '../../reports/site/services/site.service';
 import {ActivatedRoute} from '@angular/router';
+import { SiteService } from 'src/app/components/reports/site/services/site.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-data:any;
+  dataSource:any;
   constructor(private siteservice:SiteService) { }
 
   displayedColumns: string[] = ['demo-siteName', 'demo-date',"demo-action"];
@@ -17,7 +17,7 @@ data:any;
     this.siteservice.getallSites().subscribe(data => {
 
       console.log(data);
-      this.data=data;
+      this.dataSource=data.data;
       
     });
     
@@ -28,7 +28,7 @@ data:any;
       this.siteservice.getallSites().subscribe(data => {
 
         console.log(data);
-        this.data=data;
+        this.dataSource=data.data;
       });
     }
       

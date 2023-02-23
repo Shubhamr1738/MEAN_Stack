@@ -17,8 +17,8 @@ export class SiteComponent implements OnInit {
   currentDate: Date = new Date();
   ngOnInit(): void {
     this.sites = this.fb.group({
-      site: [''],
-      date: ['']
+      siteName: [''],
+      
   
     });
   }

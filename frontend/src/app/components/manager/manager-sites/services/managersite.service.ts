@@ -1,28 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Site } from '../../models/Site';
 import URL from 'src/helper';
-
 @Injectable({
   providedIn: 'root'
 })
-export class SiteService {
+export class ManagersiteService {
   siteId:any;
-  userId=localStorage.getItem('userId');
+  userId:any;
   constructor(private http:HttpClient) { }
 
-  AddItems(sites:Site): Observable<any> {
+  AddItems(sites:any): Observable<any> {
     console.log('Request is sent!');
     console.log(sites)
-    return this.http.post(`${URL}/user/63f73febbd1de321cb123a47/addsitedata`,sites)
+    return this.http.post(`${URL}/user/63e5006cfd764547ed08edc8/addsitedata`,sites)
   }
 
+  addSitetoUser(sitedata:any){
+    console.log("User Id",this.userId)
+    return this.http.post(`${URL}/user/${this.userId}/addsitedata`,sitedata)
+
+  }
   getallSites(): Observable<any>{
-    return this.http.get(`${URL}/user/getsitedata/63f73febbd1de321cb123a47`)
+    return this.http.get(`${URL}/user/getsitedata/63f72118de354dcc09f73d39`)
   }
   deleteSite(id:any){
-    return this.http.delete(`${URL}/user/${this.userId}/deletesitedata/${id}`)
+    return this.http.delete(`${URL}/user/63e5006cfd764547ed08edc8/deletesitedata/${id}`)
   }
   setSiteId(id:any){
     const siteId = localStorage.getItem('siteId');
@@ -43,5 +46,8 @@ export class SiteService {
   getSiteId(): Observable<any>{
     this.siteId =localStorage.getItem('siteId');
     return this.siteId;
+  }
+  setUserId(userId:any){
+    this.userId=userId;
   }
 }
