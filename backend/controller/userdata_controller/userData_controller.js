@@ -69,8 +69,7 @@ exports.loginUserData = async (req, res, next) => {
         res.status(200).json({
             message: 'login successfully',
             token: token,
-            id: existingUser._id,
-            message: (existingUser._id, token),
+            id: existingUser,
             expiresIn: 36000
         });
     } catch (error) {
