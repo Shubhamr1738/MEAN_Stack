@@ -1,29 +1,30 @@
 const UserData = require("../../mongodb/models/userData_model");
 
 
-exports.addsiteData = async (req,res)=>{
-    UserData.findOneAndUpdate(
-      {userid:req.params._id},
+exports.addsiteData = async (req, res) => {
+  try {
+    const user = await UserData.findOneAndUpdate(
+      { "_id": req.params.userid },
       {
-        $push:{
-          site:{
-          siteName:req.body.siteName,
-          siteCompleted:req.body.siteCompleted
-          },
-        },
+        $push: {
+          "site": {
+            siteName: req.body.siteName,
+            siteCompleted: req.body.siteCompleted
+          }
+        }
       },
-      {new:true},
-      (err,UserData)=>{
-        if(err){
-          return res.status(500).send(err);
-        }
-        if(!UserData){
-          return res.status(404).send("Username not found");
-        }
-        res.send(UserData.site);
-      }
-    )
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.send(user.site[user.site.length - 1]); // Send the newly added site object
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error.message);
   }
+};
+
 
 exports.deletesiteData = async (req,res) => {
   const {userid,sitedataid} = req.params;
