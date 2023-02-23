@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { NavBarComponent } from './components/home/nav-bar/nav-bar.component';
-import { HomeComponent } from './components/home/home/home.component';
+import { NavBarComponent } from './components/user/home/nav-bar/nav-bar.component'; 
+import { HomeComponent } from './components/user/home/home/home.component';
 import { MaterialReportsComponent } from './components/reports/material-reports/material-reports.component';
 import { CementReportsComponent } from './components/reports/cement-reports/cement-reports.component';
 import { LabourReportsComponent} from './components/reports/labour-reports/labour-reports.component';
@@ -28,7 +28,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MaterialConsumptionComponent } from './components/reports/material-consumption/material-consumption.component';
 import { AdminNavBarComponent } from './components/admin/admin-nav-bar/admin-nav-bar.component';
-import { ReportsHomeComponent } from './components/reports/reports-home/reports-home.component'
+import { ReportsHomeComponent } from './components/reports/reports-home/reports-home.component';
+import { ManagerRoutingModule } from './components/manager/Modules/manager-routing.module';
+import { ManagerNavComponent } from './components/manager/manager-nav/manager-nav.component';
+import { ManagerHomeComponent } from './components/manager/manager-home/manager-home.component';
+import { ManagerSitesComponent } from './components/manager/manager-sites/manager-sites.component';
+
 
 
 @NgModule({
@@ -48,7 +53,11 @@ import { ReportsHomeComponent } from './components/reports/reports-home/reports-
     AllReportsComponent,
     MaterialConsumptionComponent,
     AdminNavBarComponent,
-    ReportsHomeComponent
+    ReportsHomeComponent,
+    ManagerNavComponent,
+    ManagerHomeComponent,
+    ManagerSitesComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -68,6 +77,8 @@ import { ReportsHomeComponent } from './components/reports/reports-home/reports-
     MatFormFieldModule,
     MatDialogModule,
     MatIconModule,
+    ManagerRoutingModule,
+    RouterModule
     
     
   ],
