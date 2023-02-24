@@ -11,13 +11,16 @@ export class ManagerSitesComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private managerSiteService:ManagersiteService) { }
 sites:any;
+userInfo:any;
   ngOnInit(): void {
+    
     this.sites = this.fb.group({
       siteName: [''],
       
   
     });
   }
+
   saveSite(){
     console.log(this.sites.value)
     this.managerSiteService.addSitetoUser(this.sites.value).subscribe(data=>{

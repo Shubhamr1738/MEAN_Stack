@@ -4,8 +4,14 @@
 
         <mat-card>
             <mat-card-content>
-              <h3>Remaining Report dates</h3>
-        <span>currently no sites are pending</span>
+          
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action active">
+                  Remaining Report dates
+                </a>
+                <a  class="list-group-item list-group-item-action"  *ngFor="let date of pendingDates" (click)="setPendingDate(date)">{{date}}</a>
+              </div>
+
             </mat-card-content>
           </mat-card>
 
@@ -18,7 +24,7 @@
     <mat-card-content>
       <div class="signup-form">
         <!-- <h2 class="form-title">Add Your Site</h2> -->
-        <form  [formGroup]="dates" (ngSubmit)="onSubmit()">
+        <form  [formGroup]="dates" (ngSubmit)="setSiteNameandDate()">
          
           <div class="mb-3" >
             <label class="form-label">Select Date : </label>
@@ -28,7 +34,7 @@
               <p>today </p>&nbsp;{{ currentDate | date: 'dd-MM-yyyy'}}</h3>
           </div>
           
-          <button type="submit" class="btn btn-primary">Save Site</button>
+          <button type="submit" class="btn btn-primary">Continue</button>
         </form>
        
     </div>  

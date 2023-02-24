@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class LoginService {
   private token:any;
   private user_id:any;
+  private user_name:any;
   constructor(private http: HttpClient,private router:Router) { }
   
 
@@ -43,9 +44,12 @@ export class LoginService {
     this.http.post<{token:string,expiresIn:string,id:string}>('http://localhost:3000/user/login', authData)
     .subscribe({
       next:(response)=>{
-        console.log(response)
+        console.log("response from backend:::::::",response.id)
         this.token=response.token;
         this.user_id=response.id;
+        // this.user_name=response.id.username;
+// console.log(this.user_id)
+
         console.log(this.token)
         localStorage.setItem('userId',this.user_id);
         localStorage.setItem('token',this.token);
