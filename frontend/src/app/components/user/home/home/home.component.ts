@@ -10,12 +10,12 @@ export class HomeComponent implements OnInit {
 
   dataSource:any;
   constructor(private siteservice:SiteService) { }
-
+  companyName=localStorage.getItem('companyName')
   displayedColumns: string[] = [ 'demo-siteName','demo-date',"demo-action"];
 
   ngOnInit(): void {
+    
     this.siteservice.getallSites().subscribe(data => {
-
       console.log(data);
       this.dataSource=data.data;
       

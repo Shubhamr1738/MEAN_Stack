@@ -1,7 +1,8 @@
+<div class="container">
 <mat-card>
     <mat-card-content>
       <div class="signup-form">
-        <h2 class="form-title">Add Your Site</h2>
+        <h2 class="form-title">Add Site to {{this.userName}}</h2>
         <form  [formGroup]="sites" (ngSubmit)="saveSite()">
           <div class="mb-3 mt-3">
             <label  class="form-label">Name of Site</label>
@@ -15,14 +16,16 @@
     </div>  
     
     </mat-card-content>
-  </mat-card>
-  
-  
-  
+  </mat-card><br>
 
-   <div class="container">
-
-    <h1>User Sites</h1>
-
+    <h1>{{this.userName}}'s' Sites</h1>
+    <mat-card>
+      <mat-card-content>
+        <div>
+            <h3>given sites to user</h3>
+        </div>
+      
+      </mat-card-content>
+    </mat-card><br>
 
    </div>

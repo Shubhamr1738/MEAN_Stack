@@ -10,22 +10,16 @@ export class ManagersiteService {
   userId:any;
   constructor(private http:HttpClient) { }
 
-  AddItems(sites:any): Observable<any> {
-    console.log('Request is sent!');
-    console.log(sites)
-    return this.http.post(`${URL}/user/63e5006cfd764547ed08edc8/addsitedata`,sites)
-  }
-
   addSitetoUser(sitedata:any){
     console.log("User Id",this.userId)
-    return this.http.post(`${URL}/user/63f8743e3a26b302afdedd0b/addsitedata`,sitedata)
+    return this.http.post(`${URL}/user/${this.userId}/addsitedata`,sitedata)
 
   }
   getallSites(): Observable<any>{
-    return this.http.get(`${URL}/user/getsitedata/63f8743e3a26b302afdedd0b`)
+    return this.http.get(`${URL}/user/getsitedata/${this.userId}`)
   }
   deleteSite(id:any){
-    return this.http.delete(`${URL}/user/63e5006cfd764547ed08edc8/deletesitedata/${id}`)
+    return this.http.delete(`${URL}/user/${this.userId}/deletesitedata/${id}`)
   }
   setSiteId(id:any){
     const siteId = localStorage.getItem('siteId');

@@ -36,23 +36,33 @@ export class LoginService {
   public logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('companyName');
+    localStorage.removeItem('role');
+
     return true;
 
 
   }
   loginUserData(authData: any) {
-    this.http.post<{token:string,expiresIn:string,id:string}>('http://localhost:3000/user/login', authData)
+    this.http.post<{token:string,expiresIn:string,data:any}>('http://localhost:3000/user/login', authData)
     .subscribe({
       next:(response)=>{
-        console.log("response from backend:::::::",response.id)
+        console.log("response from backend:::::::",response.data)
         this.token=response.token;
-        this.user_id=response.id;
-        // this.user_name=response.id.username;
+        this.user_id=response.data._id;
+        this.user_name=response.data.username;
+        const companyName=response.data.companyName;
+        const role=response.data.role;
 // console.log(this.user_id)
 
         console.log(this.token)
         localStorage.setItem('userId',this.user_id);
         localStorage.setItem('token',this.token);
+        localStorage.setItem('userName',this.user_name);
+        localStorage.setItem('companyName',companyName);
+        localStorage.setItem('role',role);
+
         this.router.navigate(['/home']);
       }
   })

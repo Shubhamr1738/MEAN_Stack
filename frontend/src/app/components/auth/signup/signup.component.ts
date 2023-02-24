@@ -13,7 +13,8 @@ export class SignupComponent implements OnInit {
 
   signupForm:any
   constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router:Router) { }
-
+userRole=localStorage.getItem('role')
+companyname=localStorage.getItem('companyName')
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       fullName: [''],
@@ -29,7 +30,7 @@ export class SignupComponent implements OnInit {
   }
 
   signupUser() {
-    console.log(this.signupForm.value)
+    console.log("added data",this.signupForm.value)
     this.signupService.RegisterUserData(this.signupForm.value)
     .pipe(
       map(res => {

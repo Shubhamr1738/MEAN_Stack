@@ -21,11 +21,11 @@ export class SiteService {
     //   "date":date
     // }
     console.log("daily sites and dates :",sites)
-    return this.http.post(`${URL}/form/vijay/addsite`,sites)
+    return this.http.post(`${URL}/form/${this.userName}/addsite`,sites)
   }
 
   getallSites(): Observable<any>{
-    return this.http.get(`${URL}/user/getsitedata/63f8743e3a26b302afdedd0b`)
+    return this.http.get(`${URL}/user/getsitedata/${this.userId}`)
   }
   deleteSite(id:any){
     return this.http.delete(`${URL}/user/${this.userId}/deletesitedata/${id}`)
