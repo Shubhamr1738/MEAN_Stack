@@ -14,7 +14,9 @@ export class SiteComponent implements OnInit {
 
   sites:any
   constructor(private siteservice:SiteService,private router:Router,private fb:FormBuilder) { }
+  
   currentDate: Date = new Date();
+
   ngOnInit(): void {
     this.sites = this.fb.group({
       siteName: [''],

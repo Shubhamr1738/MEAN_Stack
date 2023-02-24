@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 exports.signupUserData = async (req, res, next) => {
     try {
         // Extracting user data from request body
-        const { fullName, username, email, password, role } = req.body;
+        const { fullName, username, email, password, role, companyName } = req.body;
         if (!fullName || !username || !email || !password) {
             return res.status(400).json({ message: 'Missing required fields' });
         }
@@ -25,7 +25,8 @@ exports.signupUserData = async (req, res, next) => {
             username,
             email,
             password: hashedPassword,
-            role
+            role,
+            companyName
         });
 
         // Save new user to the database
@@ -69,7 +70,7 @@ exports.loginUserData = async (req, res, next) => {
         res.status(200).json({
             message: 'login successfully',
             token: token,
-            id: existingUser,
+            data: existingUser,
             expiresIn: 36000
         });
     } catch (error) {

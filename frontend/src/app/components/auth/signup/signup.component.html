@@ -21,15 +21,15 @@
                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                 <input type="text" formControlName="email"  id="email" placeholder="Your Email">
               </div>
-              <div class="form-group">
-                <label for="email"><i class="zmdi zmdi-admin"></i>Admin</label>
+              <div class="form-group" *ngIf="userRole==='admin'">
+                <label for="email"><i class="zmdi zmdi-admin" ></i>Admin</label>
                 <input type="radio" formControlName="role"  id="email" value="admin" placeholder="Your Email">
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="userRole==='admin'">
                 <label for="email"><i class="zmdi zmdi-admin"></i>Manager</label>
                 <input type="radio" formControlName="role"  id="email" value="manager" placeholder="Your Email">
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="userRole==='manager'">
                 <label for="email"><i class="zmdi zmdi-admin"></i>User</label>
                 <input type="radio" formControlName="role"  id="email" value="user" placeholder="Your Email">
               </div>
@@ -37,9 +37,14 @@
                 <label for="pass"><i class="zmdi zmdi-account material-icons-name"></i></label>
                 <input type="text" formControlName="username"  id="username" placeholder="Your Username">
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="userRole==='manager'">
                 <label for="pass"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input type="text" formControlName="companyName"  id="username" placeholder="Company Name">
+                <input type="text" formControlName="companyName"  id="username" [placeholder]="companyname" [value]="companyname" >
+
+              </div>
+              <div class="form-group" *ngIf="userRole==='admin'">
+                <label for="pass"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input type="text" formControlName="companyName"  id="username" placeholder="Company Name"  >
               </div>
               <div class="form-group">
                 <label for="site"><i class="zmdi zmdi-lock"></i></label>
