@@ -33,6 +33,8 @@ import { ManagerRoutingModule } from './components/manager/Modules/manager-routi
 import { ManagerNavComponent } from './components/manager/manager-nav/manager-nav.component';
 import { ManagerHomeComponent } from './components/manager/manager-home/manager-home.component';
 import { ManagerSitesComponent } from './components/manager/manager-sites/manager-sites.component';
+import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -78,7 +80,8 @@ import { ManagerSitesComponent } from './components/manager/manager-sites/manage
     MatDialogModule,
     MatIconModule,
     ManagerRoutingModule,
-    RouterModule
+    RouterModule,
+    MatListModule,
     
     
   ],

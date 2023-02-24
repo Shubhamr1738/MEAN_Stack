@@ -13,7 +13,7 @@
         
           <ng-container matColumnDef="demo-siteName">
             <th mat-header-cell *matHeaderCellDef>Site</th>
-            <td mat-cell *matCellDef="let element" ><button class="btn btn-light" (click)="addsite(element._id)" routerLink="/reportshome" >{{element.siteName}}</button></td>
+            <td mat-cell *matCellDef="let element" ><button class="btn btn-light" (click)="addsite(element._id,element.siteName)" routerLink="/reportshome" >{{element.siteName}}</button></td>
             
           </ng-container>
         
@@ -49,7 +49,7 @@
         
           <ng-container matColumnDef="demo-siteName">
             <th mat-header-cell *matHeaderCellDef>Site</th>
-            <td mat-cell *matCellDef="let element" ><button class="btn btn-light" (click)="addsite(element._id)" routerLink="/reportshome" >{{element.siteName}}</button></td>
+            <td mat-cell *matCellDef="let element" ><button class="btn btn-light" >{{element.siteName}}</button></td>
             
           </ng-container>
         
@@ -58,10 +58,7 @@
             <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'yyyy-MM-dd'}} </td>
           </ng-container>
 
-          <ng-container matColumnDef="demo-status">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element"> {{element.siteCompleted }} </td>
-          </ng-container>
+          
           
           <ng-container matColumnDef="demo-action">
             <th mat-header-cell *matHeaderCellDef > Action </th>

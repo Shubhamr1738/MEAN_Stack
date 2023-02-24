@@ -25,14 +25,14 @@ export class SiteComponent implements OnInit {
   saveSite(){
    
     console.log(this.sites.value)
-    this.siteservice.AddItems(this.sites.value).subscribe(
-      (data:any)=>{
-        //success
-        console.log(data);
-        this.router.navigate(['/home']);
+    // this.siteservice.AddItems(this.sites.value).subscribe(
+    //   (data:any)=>{
+    //     //success
+    //     console.log(data);
+    //     this.router.navigate(['/home']);
 
-    },
-    error=>console.log(error));
+    // },
+    // error=>console.log(error));
 }
 
 }

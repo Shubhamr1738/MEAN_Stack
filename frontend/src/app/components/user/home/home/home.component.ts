@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   dataSource:any;
   constructor(private siteservice:SiteService) { }
 
-  displayedColumns: string[] = ['demo-siteName', 'demo-date',"demo-action"];
+  displayedColumns: string[] = [ 'demo-siteName','demo-date',"demo-action"];
 
   ngOnInit(): void {
     this.siteservice.getallSites().subscribe(data => {
@@ -34,11 +34,12 @@ export class HomeComponent implements OnInit {
       
     )
   }
-  addsite(id:any){
+  addsite(id:any,siteName:any){
     // localStorage.removeItem('siteId');
     // localStorage.setItem('siteId',id);
     // console.log("in home component",localStorage.getItem('siteId'));
-    this.siteservice.setSiteId(id)
+    this.siteservice.setSiteName(siteName);
+    this.siteservice.setSiteId(id);
   }
 
   

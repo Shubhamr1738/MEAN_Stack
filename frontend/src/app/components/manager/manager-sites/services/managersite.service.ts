@@ -18,11 +18,11 @@ export class ManagersiteService {
 
   addSitetoUser(sitedata:any){
     console.log("User Id",this.userId)
-    return this.http.post(`${URL}/user/${this.userId}/addsitedata`,sitedata)
+    return this.http.post(`${URL}/user/63f8743e3a26b302afdedd0b/addsitedata`,sitedata)
 
   }
   getallSites(): Observable<any>{
-    return this.http.get(`${URL}/user/getsitedata/63f72118de354dcc09f73d39`)
+    return this.http.get(`${URL}/user/getsitedata/63f8743e3a26b302afdedd0b`)
   }
   deleteSite(id:any){
     return this.http.delete(`${URL}/user/63e5006cfd764547ed08edc8/deletesitedata/${id}`)

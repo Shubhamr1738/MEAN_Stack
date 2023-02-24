@@ -10,16 +10,22 @@ import URL from 'src/helper';
 export class SiteService {
   siteId:any;
   userId=localStorage.getItem('userId');
+  userName=localStorage.getItem('userName');
+  siteName:any;
   constructor(private http:HttpClient) { }
 
-  AddItems(sites:Site): Observable<any> {
+  AddDailySite(sites:any): Observable<any> {
     console.log('Request is sent!');
-    console.log(sites)
-    return this.http.post(`${URL}/user/63f73febbd1de321cb123a47/addsitedata`,sites)
+    // const sites={
+    //   "siteName":this.siteName,
+    //   "date":date
+    // }
+    console.log("daily sites and dates :",sites)
+    return this.http.post(`${URL}/form/vijay/addsite`,sites)
   }
 
   getallSites(): Observable<any>{
-    return this.http.get(`${URL}/user/getsitedata/63f73febbd1de321cb123a47`)
+    return this.http.get(`${URL}/user/getsitedata/63f8743e3a26b302afdedd0b`)
   }
   deleteSite(id:any){
     return this.http.delete(`${URL}/user/${this.userId}/deletesitedata/${id}`)
@@ -44,4 +50,12 @@ export class SiteService {
     this.siteId =localStorage.getItem('siteId');
     return this.siteId;
   }
+  setSiteName(siteName:any){
+    this.siteName=siteName;
+
+  }
+  getSiteName(){
+    return this.siteName;
+  }
+
 }
