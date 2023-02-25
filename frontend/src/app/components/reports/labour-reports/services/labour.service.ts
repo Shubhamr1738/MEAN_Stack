@@ -19,12 +19,12 @@ export class LabourService {
 
    
   addLabourReports(labourData: any,id:any): Observable<any> {
-  return this.http.post(`${this.url}${id}`,labourData)
+        return this.http.post(`${URL}/form/addlabour/${id}`,labourData)
     }
 
     getallLabours(SiteId:any): Observable<any>{
       console.log("Service Site ID:",SiteId)
-        return this.http.get(`http://localhost:3000/form/getlabour/${SiteId}`)
+        return this.http.get(`${URL}/form/getlabour/${SiteId}`)
       }
 
 

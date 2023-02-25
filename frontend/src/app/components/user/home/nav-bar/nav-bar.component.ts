@@ -10,8 +10,12 @@ import { LoginService } from 'src/app/components/auth/login/services/login.servi
 export class NavBarComponent implements OnInit {
 
   constructor(private loginService:LoginService,private router:Router) { }
-
+  
+userRole:any
   ngOnInit(): void {
+   this.userRole=localStorage.getItem('role')
+    console.log("User Role Assigned: ",this.userRole)
+    
   }
 logout(){
   this.loginService.logout()

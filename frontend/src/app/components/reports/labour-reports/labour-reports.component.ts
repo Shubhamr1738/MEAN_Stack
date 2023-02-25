@@ -12,7 +12,7 @@ export class LabourReportsComponent implements OnInit {
   
     labours:any
     message: any;
-    @Input() SiteID:any
+   SiteID=localStorage.getItem('siteId')
     // @Output() messageEvent = new EventEmitter<any>();
 
   dataSource:any;
@@ -36,7 +36,7 @@ export class LabourReportsComponent implements OnInit {
     clickedRows = new Set<any>();
     ngOnInit(): void {
       console.log("this site id ",localStorage.getItem('siteId'))
-      this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
+      this.labourDataService.getallLabours(this.SiteID).subscribe(data => {
 
         console.log("get all labour data:",data);
         this.dataSource=data.data;
@@ -48,7 +48,7 @@ export class LabourReportsComponent implements OnInit {
       console.log(this.labours.value)
       this.labourDataService.addLabourReports(this.labours.value,this.SiteID).subscribe(data=>{
         console.log("data added succesfully")
-        this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
+        this.labourDataService.getallLabours(this.SiteID).subscribe(data => {
 
           console.log(data);
           this.dataSource=data.data;
@@ -74,7 +74,7 @@ export class LabourReportsComponent implements OnInit {
         
         data => {
           console.log(data),
-          this.labourDataService.getallLabours(localStorage.getItem('siteId')).subscribe(data => {
+          this.labourDataService.getallLabours(this.SiteID).subscribe(data => {
 
           console.log(data);
           this.dataSource=data.data;

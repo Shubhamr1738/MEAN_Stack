@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +34,7 @@ import { ManagerNavComponent } from './components/manager/manager-nav/manager-na
 import { ManagerHomeComponent } from './components/manager/manager-home/manager-home.component';
 import { ManagerSitesComponent } from './components/manager/manager-sites/manager-sites.component';
 import {MatListModule} from '@angular/material/list';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -64,6 +65,7 @@ import {MatListModule} from '@angular/material/list';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatTabsModule,
@@ -85,7 +87,11 @@ import {MatListModule} from '@angular/material/list';
     
     
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
