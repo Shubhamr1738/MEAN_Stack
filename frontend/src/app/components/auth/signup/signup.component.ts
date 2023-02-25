@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   signupForm:any
   constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router:Router) { }
 userRole=localStorage.getItem('role')
-companyname=localStorage.getItem('companyName')
+companyname = localStorage.getItem('companyName') !== "undefined" ? localStorage.getItem('companyName') : "";
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       fullName: [''],
@@ -22,11 +22,9 @@ companyname=localStorage.getItem('companyName')
       email: [''],
       password: [''],
       role: [''],
-      companyName:['']
-
-     
+      companyName:[this.companyname]
     });
-    
+
   }
 
   signupUser() {
