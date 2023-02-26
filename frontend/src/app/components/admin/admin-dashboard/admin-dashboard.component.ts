@@ -11,7 +11,11 @@ export class AdminDashboardComponent implements OnInit {
   table:any
   // @ViewChild(MatTable, {static:false}) table: MatTable<any>;
   // displayedColumns: string[] = ['demo-firstName', 'demo-lastName', 'demo-email', 'demo-username','demo-password', 'demo-sites'];
-  dataSource:any
+  userdataSource:any
+  adminDatasource:any
+  managerDataSource:any
+  allUserData:any
+  selectedCompanyName:any
   constructor(private dataService: AdminService,public dialog: MatDialog) {}
   displayedColumns: string[] = ['demo-fullname', 'demo-email', 'demo-username','demo-password', 'demo-role',"demo-delete"];
 
@@ -21,7 +25,10 @@ export class AdminDashboardComponent implements OnInit {
     this.dataService.getusers().subscribe(data => {
 
       console.log(data.data);
-      this.dataSource=data.data;
+      this.allUserData=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string,companyName:string  }) => user.role === 'manager');
+      // this.userdataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string ,companyName:string      }) => user.role === 'user');
+      this.adminDatasource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'admin');
+      // this.managerDataSource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string,companyName:string  }) => user.role === 'manager');
     });
   }
 
@@ -31,13 +38,25 @@ export class AdminDashboardComponent implements OnInit {
       this.dataService.getusers().subscribe(data => {
 
         console.log(data.data);
-        this.dataSource=data.data;
+        // this.userdataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
+        this.adminDatasource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'admin');
+        // this.managerDataSource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'manager');
+     
       });
     }
     
     )
     
     
+  }
+  getCompanyName(selectedCompanyName:any){
+    this.dataService.getusers().subscribe(data => {
+
+      console.log(data.data);
+      // this.allUserData=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string,companyName:string  }) => user.role === 'manager');
+      this.userdataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string ,companyName:string      }) => user.role === 'user'&& user.companyName === selectedCompanyName);
+      this.managerDataSource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string,companyName:string  }) => user.role === 'manager'&& user.companyName === selectedCompanyName);
+    });
   }
   
 }

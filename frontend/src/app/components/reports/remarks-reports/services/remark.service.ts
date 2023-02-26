@@ -9,9 +9,10 @@ import URL from 'src/helper';
 export class RemarkService {
 
   constructor(private http : HttpClient) { }
-  // siteId=localStorage.getItem('siteId')
-  addRemarks(remarkData:any,siteId:any):Observable<any>{
-    return this.http.post(`${URL}/form/addremarks/${siteId}`,remarkData)
+  private siteId=localStorage.getItem('dailythis.siteId')
+
+  addRemarks(remarkData:any):Observable<any>{
+    return this.http.post(`${URL}/form/addremarks/${this.siteId}`,remarkData)
 
   }
 }

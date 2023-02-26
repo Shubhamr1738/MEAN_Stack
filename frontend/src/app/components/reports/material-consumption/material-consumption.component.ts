@@ -11,7 +11,6 @@ export class MaterialConsumptionComponent implements OnInit {
   materialsconsuption:any;
 materialConsuptionData:any;
 
-@Input() SiteID:any;
 
   constructor(private fb:FormBuilder,private materialConsuptionService:MaterialconService) { 
 
@@ -32,7 +31,7 @@ materialConsuptionData:any;
     console.log(this.materialsconsuption.value)
   }
   ngOnInit(): void {
-    this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+    this.materialConsuptionService.getmaterialConsuptionReports().subscribe(data=>{
       console.log("Materialconsption  recieved");
       this.materialConsuptionData=data.data
 
@@ -40,10 +39,10 @@ materialConsuptionData:any;
   }
 
   addMaterialConsuption(){
-    this.materialConsuptionService.addMaterialconsumption(this.materialsconsuption.value,this.SiteID).subscribe(data=>{
+    this.materialConsuptionService.addMaterialconsumption(this.materialsconsuption.value).subscribe(data=>{
       console.log("Material Consuption data has been added")
       
-      this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+      this.materialConsuptionService.getmaterialConsuptionReports().subscribe(data=>{
         console.log("Materialconsption  recieved");
         this.materialConsuptionData=data.data
   
@@ -53,10 +52,10 @@ materialConsuptionData:any;
 
   deleteMaterialConsuptionData(id:any){
 
-this.materialConsuptionService.deleteMaterialConsuptions(id,this.SiteID).subscribe(data=>{
+this.materialConsuptionService.deleteMaterialConsuptions(id).subscribe(data=>{
   console.log("Materal Consuption Data has been deleted");
 
-  this.materialConsuptionService.getmaterialConsuptionReports(this.SiteID).subscribe(data=>{
+  this.materialConsuptionService.getmaterialConsuptionReports().subscribe(data=>{
     console.log("Materialconsption  recieved");
     this.materialConsuptionData=data.data
 

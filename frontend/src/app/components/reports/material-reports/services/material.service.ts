@@ -9,17 +9,17 @@ import URL from 'src/helper';
 export class MaterialService {
 
   constructor(private http:HttpClient) { }
-// siteId=localStorage.getItem('siteId')
+  private siteId=localStorage.getItem('dailySiteId')
 
-  getMaterials(siteId:any): Observable<any>{
-    return this.http.get(`${URL}/form/getmaterial/${siteId}`)
+  getMaterials(): Observable<any>{
+    return this.http.get(`${URL}/form/getmaterial/${this.siteId}`)
   }
-  addMaterials(data:any,siteId:any): Observable<any>{
-    return this.http.post(`${URL}/form/addmaterial/${siteId}`,data)
+  addMaterials(data:any): Observable<any>{
+    return this.http.post(`${URL}/form/addmaterial/${this.siteId}`,data)
   }
 
-  deleteMaterials(id:any,siteId:any): Observable<any>{
+  deleteMaterials(id:any): Observable<any>{
 
-    return this.http.delete(`${URL}/form/deletematerial/${siteId}/${id}`,id)
+    return this.http.delete(`${URL}/form/deletematerial/${this.siteId}/${id}`,id)
   }
 }

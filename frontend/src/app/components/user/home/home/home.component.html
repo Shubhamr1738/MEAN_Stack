@@ -1,8 +1,9 @@
+<div class="container">
 <div class="mt-4 p-5 bg-primary text-white rounded">
   <h1>{{companyName}}</h1>
   
 </div>
-
+<br><br>
 
 
 
@@ -26,7 +27,7 @@
           
           <ng-container matColumnDef="demo-action">
             <th mat-header-cell *matHeaderCellDef > Action </th>
-            <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteSite(element._id)">Delete</button>&nbsp;</td>
+             <td mat-cell *matCellDef="let element"><button class="btn btn-danger"></button>&nbsp;Directly fill todays Form</td>
             
           </ng-container>
 
@@ -41,38 +42,4 @@
     </mat-card-content>
 </mat-card>
 
-
-<mat-card>
-  <mat-card-content>
-      <h2>Completed  Sites</h2>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5">
-        
-          <ng-container matColumnDef="demo-siteName">
-            <th mat-header-cell *matHeaderCellDef>Site</th>
-            <td mat-cell *matCellDef="let element" ><button class="btn btn-light" >{{element.siteName}}</button></td>
-            
-          </ng-container>
-        
-          <ng-container matColumnDef="demo-date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'yyyy-MM-dd'}} </td>
-          </ng-container>
-
-          
-          
-          <ng-container matColumnDef="demo-action">
-            <th mat-header-cell *matHeaderCellDef > Action </th>
-            <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteSite(element._id)">Delete</button>&nbsp;</td>
-            
-          </ng-container>
-
-         
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-        
-        
-      
-  </mat-card-content>
-</mat-card>
+</div>

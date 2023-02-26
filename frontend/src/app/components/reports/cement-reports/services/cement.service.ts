@@ -7,15 +7,15 @@ import URL from 'src/helper';
   providedIn: 'root'
 })
 export class CementService {
-
+private siteId=localStorage.getItem('dailySiteId')
   constructor(private http :HttpClient) { }
   // SiteId=localStorage.getItem('siteId')
-  getCement(SiteID:any): Observable<any>{
-    return this.http.get(`${URL}/form/getcement/${SiteID}`)
+  getCement(): Observable<any>{
+    return this.http.get(`${URL}/form/getcement/${this.siteId}`)
   }
 
-addCement(data:any,SiteID:any){
-  return this.http.post(`${URL}/form/addcement/${SiteID}`,data)
+addCement(data:any){
+  return this.http.post(`${URL}/form/addcement/${this.siteId}`,data)
   
 }
 }

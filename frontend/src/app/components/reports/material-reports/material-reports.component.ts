@@ -10,7 +10,6 @@ import { MaterialService } from './services/material.service';
 export class MaterialReportsComponent implements OnInit {
   materials:any;
   materialDataSource:any
-  @Input() SiteID:any
 
 
   displayedColumns: string[] = ['demo-materialReceived','demo-supplierName', 'demo-quality', 'demo-billNo', 'demo-amount','demo-paid','demo-time','demo-action'];
@@ -34,10 +33,10 @@ export class MaterialReportsComponent implements OnInit {
     console.log(this.materials.value)
   }
   addMaterials(){
-    this.materialService.addMaterials(this.materials.value,this.SiteID).subscribe(data=>{
+    this.materialService.addMaterials(this.materials.value).subscribe(data=>{
       console.log("material has been Added",data);
       this.materialDataSource=data
-      this.materialService.getMaterials(this.SiteID).subscribe(data=>{
+      this.materialService.getMaterials().subscribe(data=>{
         console.log("Materials Recieved",data)
         this.materialDataSource=data.data;
       })
@@ -45,17 +44,17 @@ export class MaterialReportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.materialService.getMaterials(this.SiteID).subscribe(data=>{
+    this.materialService.getMaterials().subscribe(data=>{
       console.log("Materials Recieved",data)
       this.materialDataSource=data.data;
     })
   }
   delete(id:any){
 
-    this.materialService.deleteMaterials(id,this.SiteID).subscribe(data=>{
+    this.materialService.deleteMaterials(id).subscribe(data=>{
       console.log("data Deleted Succesfully")
 
-      this.materialService.getMaterials(this.SiteID).subscribe(data=>{
+      this.materialService.getMaterials().subscribe(data=>{
         console.log("Materials Recieved",data)
         this.materialDataSource=data.data;
       })

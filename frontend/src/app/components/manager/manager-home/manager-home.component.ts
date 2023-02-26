@@ -17,14 +17,21 @@ export class ManagerHomeComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getusers().subscribe(data=>{
 
-      this.dataSource=data.data
-    })
-  }
+      // this.dataSource=data.data
+      this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
 
+    })
+    
+  }
+  // getUserData(dataSource:any) {
+  //   let i = 0;
+  //   return dataSource.filter(data => data.role === 'user')
+  //                    .map(data => ({...data, id: i++}));
+  // }
   deleteUser(userid:any){
     this.adminService.deleteUser(userid).subscribe(data=>{
       this.adminService.getusers().subscribe(data=>{
-        this.dataSource=data.data
+        this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
       })
     })
 
