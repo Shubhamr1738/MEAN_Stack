@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../auth/login/services/login.service';
 
 @Component({
   selector: 'navbar-dark bg-dark',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService:LoginService,private router:Router) { }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }

@@ -10,6 +10,7 @@ export class ManagerService {
 userName:any
   setSelectedUserName(userName:any){
     console.log(userName,"is assigned")
+    localStorage.setItem('selectedUserName',userName)
 this.userName=userName
 
   }

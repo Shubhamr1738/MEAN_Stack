@@ -7,7 +7,7 @@ import URL from 'src/helper';
 })
 export class ManagersiteService {
   siteId:any;
-  userId:any;
+  userId=localStorage.getItem('selectedUserId')
   constructor(private http:HttpClient) { }
 
   addSitetoUser(sitedata:any){
@@ -18,30 +18,31 @@ export class ManagersiteService {
   getallSites(): Observable<any>{
     return this.http.get(`${URL}/user/getsitedata/${this.userId}`)
   }
-  deleteSite(id:any){
+
+  getSiteByUserId(userId:any):Observable<any>{
+    return this.http.get(`${URL}/user/getsitedata/${userId}`)
+  }
+  getSitedataByUserName(userName:any):Observable<any>{
+    return this.http.get(`${URL}/form//getsitebyuname/${userName}`)
+  }
+
+  deleteSitebyUserId(id:any){
     return this.http.delete(`${URL}/user/${this.userId}/deletesitedata/${id}`)
   }
-  setSiteId(id:any){
-    const siteId = localStorage.getItem('siteId');
-    if(siteId==id){
-      console.log("Id Exists")
-      localStorage.removeItem('siteId')
-      console.log("site id Removed")
-      localStorage.setItem('siteId',id)
-      console.log("Site Id saved")
-    }
-    else{
-      console.log("Not present")
-      localStorage.setItem('siteId',id);
-      console.log("Site Id saved")
-    }
+deletebysiteId(siteId:any){
+  return this.http.delete(`${URL}/form/deletesite/${siteId}`)
 
-  }
+}
   getSiteId(): Observable<any>{
     this.siteId =localStorage.getItem('siteId');
     return this.siteId;
   }
   setUserId(userId:any){
+    
+    localStorage.setItem('selectedUserId',userId)
     this.userId=userId;
+  }
+  getUserId(){
+    return this.userId;
   }
 }
