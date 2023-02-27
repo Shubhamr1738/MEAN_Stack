@@ -29,6 +29,9 @@ companyname = localStorage.getItem('companyName') !== "undefined" ? localStorage
 
   signupUser() {
     console.log("added data",this.signupForm.value)
+    if(this.userRole==='manager'){
+      this.signupForm.value.role='user'
+    }
     this.signupService.RegisterUserData(this.signupForm.value)
     .pipe(
       map(res => {

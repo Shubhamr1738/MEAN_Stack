@@ -12,24 +12,24 @@ import URL from 'src/helper';
 export class LabourService {
   private url = 'http://localhost:3000/form/addlabour/';
   private userId=localStorage.getItem('userId');
-  // private SiteId=localStorage.getItem('siteId');
+  private SiteId=localStorage.getItem('dailySiteId');
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
 
    
   addLabourReports(labourData: any,id:any): Observable<any> {
-        return this.http.post(`${URL}/form/addlabour/${id}`,labourData)
+        return this.http.post(`${URL}/form/addlabour/${this.SiteId}`,labourData)
     }
 
     getallLabours(SiteId:any): Observable<any>{
       console.log("Service Site ID:",SiteId)
-        return this.http.get(`${URL}/form/getlabour/${SiteId}`)
+        return this.http.get(`${URL}/form/getlabour/${this.SiteId}`)
       }
 
 
       deletelabour(id:number,SiteId:any):Observable<any>{
-        return this.http.delete(`${URL}/form/deletelabour/${SiteId}/${id}`)
+        return this.http.delete(`${URL}/form/deletelabour/${this.SiteId}/${id}`)
       }
       
     updatelabour(id:number,body:LabourReport): Observable<any>{

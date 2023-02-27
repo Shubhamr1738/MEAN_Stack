@@ -1,14 +1,13 @@
 <div class="container">
 <h2>Users</h2>
-<button class="btn btn-primary" routerLink="/signup">Add Users</button>
     <mat-card>
       <mat-card-content>
-      
+        <button class="btn btn-primary" routerLink="/signup">Add Users</button><br>
+
       
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5" >
           
 
-              <ng-container >
               <ng-container matColumnDef="demo-fullname" >
                 <th mat-header-cell *matHeaderCellDef>Full Name</th>
                 <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
@@ -43,7 +42,6 @@
                     <button class="btn btn-success">Update</button>&nbsp;
                     <button class="btn btn-danger" (click)="setUserId(element._id,element.username)" routerLink="/managesite">ManageSite</button></td>
                 
-              </ng-container>
             
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -55,4 +53,6 @@
           
       </mat-card-content>
   </mat-card>
+
+
 </div>

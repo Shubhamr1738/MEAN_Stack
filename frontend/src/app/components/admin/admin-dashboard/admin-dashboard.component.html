@@ -7,7 +7,7 @@
             
            <button class="btn btn-primary" routerLink="/signup">Add Users</button>&nbsp;           
               
-              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5" >
+              <table mat-table [dataSource]="adminDatasource" class="mat-elevation-z8 demo-table mt-5" >
               
                 <ng-container matColumnDef="demo-fullname">
                   <th mat-header-cell *matHeaderCellDef>Full Name</th>
@@ -36,7 +36,12 @@
                   <th mat-header-cell *matHeaderCellDef>Role</th>
                   <td mat-cell *matCellDef="let element">{{element.role}}</td>
                 </ng-container>
-                
+
+                <ng-container matColumnDef="demo-companyName">
+                  <th mat-header-cell *matHeaderCellDef>companyName</th>
+                  <td mat-cell *matCellDef="let element">--</td>
+                </ng-container>
+
                 <ng-container matColumnDef="demo-delete">
                   <th mat-header-cell *matHeaderCellDef > Delete User </th>
                   <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success">Update</button> </td>
@@ -50,13 +55,25 @@
               
             
         </mat-card-content>
-    </mat-card>
-<h2>Managers</h2>
+    </mat-card><br>
+    <form>
+      <h3>Select Company Name</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Company Name</mat-label>
+        <mat-select [(ngModel)]="selectedCompanyName" name="food">
+          <mat-option *ngFor="let user of allUserData" [value]="user.companyName" (click)="getCompanyName(user.companyName)">
+            {{user.companyName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form><br>
+<h2 *ngIf="managerDataSource">Managers</h2>
     <mat-card>
       <mat-card-content>
-        
+
+       
             
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5">
+            <table mat-table [dataSource]="managerDataSource" class="mat-elevation-z8 demo-table mt-5" >
             
               <ng-container matColumnDef="demo-fullname">
                 <th mat-header-cell *matHeaderCellDef>Full Name</th>
@@ -80,6 +97,7 @@
                 <td mat-cell *matCellDef="let element"> ....... </td>
               </ng-container>
 
+              
 
               <ng-container matColumnDef="demo-role">
                 <th mat-header-cell *matHeaderCellDef>Role</th>
@@ -100,13 +118,12 @@
           
       </mat-card-content>
   </mat-card>
-  <h2>Users</h2>
+  <h2 *ngIf="userdataSource">Users</h2>
     <mat-card>
       <mat-card-content>
-        <ng-container >
-          <ng-container>
+       
       
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5" >
+            <table mat-table [dataSource]="userdataSource" class="mat-elevation-z8 demo-table mt-5" >
               
               <ng-container matColumnDef="demo-fullname" >
                 <th mat-header-cell *matHeaderCellDef>Full Name</th>
@@ -135,6 +152,8 @@
                 <th mat-header-cell *matHeaderCellDef>Role</th>
                 <td mat-cell *matCellDef="let element">{{element.role}}</td>
               </ng-container>
+
+              
               
               <ng-container matColumnDef="demo-delete">
                 <th mat-header-cell *matHeaderCellDef > Delete User </th>
@@ -146,9 +165,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             
             </table>
-          </ng-container>
-        </ng-container>
-        
+         
           
       </mat-card-content>
   </mat-card>

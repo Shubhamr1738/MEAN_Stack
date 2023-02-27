@@ -7,18 +7,19 @@ import URL from 'src/helper';
   providedIn: 'root'
 })
 export class MaterialconService {
+  private SiteId=localStorage.getItem('dailySiteId');
 
   constructor(private http : HttpClient) { }
 // siteId=localStorage.getItem('siteId')
 
-  addMaterialconsumption(data:any,siteId:any): Observable<any>{
-    return this.http.post(`${URL}/form/addmaterialC/${siteId}`,data);
+  addMaterialconsumption(data:any): Observable<any>{
+    return this.http.post(`${URL}/form/addmaterialC/${this.SiteId}`,data);
   }
 
-getmaterialConsuptionReports(siteId:any): Observable<any>{
-  return this.http.get(`${URL}/form/getmaterialC/${siteId}`);
+getmaterialConsuptionReports(): Observable<any>{
+  return this.http.get(`${URL}/form/getmaterialC/${this.SiteId}`);
 }
-deleteMaterialConsuptions(id:any,siteId:any){
-return this.http.delete(`${URL}/form/deletematerialC/${siteId}/${id}`);
+deleteMaterialConsuptions(id:any){
+return this.http.delete(`${URL}/form/deletematerialC/${this.SiteId}/${id}`);
 }
 }

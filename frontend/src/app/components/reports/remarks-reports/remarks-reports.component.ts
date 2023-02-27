@@ -25,7 +25,7 @@ export class RemarksReportsComponent implements OnInit {
   ngOnInit(): void {
   }
 addRemarks(){
-  this.remarkSerivice.addRemarks(this.remarks.value,this.SiteID).subscribe(data=>{
+  this.remarkSerivice.addRemarks(this.remarks.value).subscribe(data=>{
     console.log("remarks has been Added")
   })
 }

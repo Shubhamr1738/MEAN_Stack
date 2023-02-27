@@ -38,9 +38,11 @@ confirmStatus(){
   console.log(this.siteStatus)
   this.reportHomeService.siteStatus(this.siteStatus);
 }
+
 setSiteNameandDate(){
 this.siteService.AddDailySite(this.dates.value).subscribe(data=>{
   console.log("Added date and name of site")
+  localStorage.setItem('dailySiteId',data.siteid)
   this.router.navigate(['/reports']);
 })
 

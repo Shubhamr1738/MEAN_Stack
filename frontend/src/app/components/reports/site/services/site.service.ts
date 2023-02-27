@@ -16,12 +16,13 @@ export class SiteService {
 
   AddDailySite(sites:any): Observable<any> {
     console.log('Request is sent!');
-    // const sites={
-    //   "siteName":this.siteName,
-    //   "date":date
-    // }
     console.log("daily sites and dates :",sites)
     return this.http.post(`${URL}/form/${this.userName}/addsite`,sites)
+  }
+
+  getDailySiteData(){
+    return this.http.get(`${URL}/form/getsitedata/${this.userName}`)
+
   }
 
   getallSites(): Observable<any>{
