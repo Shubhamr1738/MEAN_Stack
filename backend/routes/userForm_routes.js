@@ -8,6 +8,7 @@ const materialR = require("../controller/userform_controller/materialReport_cont
 const materialC = require("../controller/userform_controller/materialConsumption_controller")
 const remarks = require("../controller/userform_controller/remark_controller")
 const convert = require("../controller/convert")
+
 //<*****************/---------------- site ---------------------/*************> 
 
 router.post("/:username/addsite",site.addSite);
@@ -55,4 +56,5 @@ router.delete("/deleteremark/:id",remarks.deleteRemarks);
 router.put("/updateremarks/:id",remarks.updateRemarks);
 router.get("/convert",convert.convert)
 router.get("/pending",remarks.pendingdate);
+router.get("/pendingdate/:username/:startdate/:page",remarks.pendingdates)
 module.exports = router;

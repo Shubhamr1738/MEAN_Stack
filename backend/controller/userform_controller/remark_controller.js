@@ -56,7 +56,7 @@ exports.updateRemarks = async (req, res) => {
     }
 };
 
-
+/*
 exports.pendingdate = (req, res) => {
     let startOfMonth = new Date();
     startOfMonth.setDate(1);
@@ -85,4 +85,34 @@ exports.pendingdate = (req, res) => {
 }
 
 
+*/
+exports.pendingdates = async (req, res) => {
+  try {
+    const { username, startdate } = req.params;
+
+    // Convert the startdate string from "dd-mm-yyyy" format to a Date object
+    const [day, month, year] = startdate.split('-').map(part => parseInt(part, 10));
+    const startDate = new Date(year, month - 1, day);
+    const endDate = new Date(); // create a new Date object for the current date
+
+    const forms = await UserForm.find({ username, date: { $gte: startDate, $lte: endDate } }).select('date');
+
+    const allDates = forms.map(form => form.date.toISOString().slice(0, 10));
+
+    const start = startDate;
+    const end = endDate;
+    const dates = [];
+    while (start <= end) {
+      dates.push(start.toISOString().slice(0, 10));
+      const newDate = start.setDate(start.getDate() + 1);
+      start.setTime(newDate);
+    }
+
+    const missingDates = dates.filter(date => !allDates.includes(date));
+
+    res.json({ success: true, data: missingDates });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
 

@@ -13,7 +13,6 @@ const userFormSchema = new mongoose.Schema({
     date: {
         type: Date,
         required : true,
-        unique:true
     },
 
     cementReports: {
