@@ -55,64 +55,75 @@ exports.updateRemarks = async (req, res) => {
         return res.status(500).send(err);
     }
 };
-
-/*
-exports.pendingdate = (req, res) => {
-    let startOfMonth = new Date();
-    startOfMonth.setDate(1);
-    startOfMonth.setUTCHours(0, 0, 0, 0);
-    startOfMonth.setUTCMonth(new Date().getUTCMonth());
-    startOfMonth.setUTCFullYear(new Date().getUTCFullYear());
-
-    UserForm.find({date: {$gte: startOfMonth}}).select('date -_id').exec((err, forms) => {
-        if (err) {
-            return res.status(500).json({error: err.message});
-        } else {
-            let availableDates = forms.map(form => new Date(form.date).toISOString().substring(0, 10));
-            let currentDate = new Date().toISOString().substring(0, 10);
-            let unavailableDates = [];
-
-            for (let d = startOfMonth; d <= new Date(); d.setUTCDate(d.getUTCDate() + 1)) {
-                let dateString = d.toISOString().substring(0, 10);
-                if (!availableDates.includes(dateString)) {
-                    unavailableDates.push(dateString);
-                }
-            }
-
-            return res.status(200).json({dates: unavailableDates});
-        }
-    });
-}
-
-
-*/
-exports.pendingdates = async (req, res) => {
-  try {
-    const { username, startdate } = req.params;
-
-    // Convert the startdate string from "dd-mm-yyyy" format to a Date object
-    const [day, month, year] = startdate.split('-').map(part => parseInt(part, 10));
-    const startDate = new Date(year, month - 1, day);
-    const endDate = new Date(); // create a new Date object for the current date
-
-    const forms = await UserForm.find({ username, date: { $gte: startDate, $lte: endDate } }).select('date');
-
-    const allDates = forms.map(form => form.date.toISOString().slice(0, 10));
-
-    const start = startDate;
-    const end = endDate;
-    const dates = [];
-    while (start <= end) {
-      dates.push(start.toISOString().slice(0, 10));
-      const newDate = start.setDate(start.getDate() + 1);
-      start.setTime(newDate);
+exports.pendingdates = async (req, res, next) => {
+    const { username } = req.params;
+    const startdateParts = req.params.startdate.split('-');
+    const startdateFormatted = `${startdateParts[1]}-${startdateParts[0]}-${startdateParts[2]}`;
+    const page = parseInt(req.params.page) || 1; // Parse the page parameter to an integer, default to 1
+  
+    function getDatesInRange(startDate, endDate) {
+      // Define a function to generate an array of dates between two dates
+      const dates = [];
+      let currentDate = new Date(startDate);
+      while (currentDate <= endDate) {
+        dates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+      return dates;
     }
-
-    const missingDates = dates.filter(date => !allDates.includes(date));
-
-    res.json({ success: true, data: missingDates });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-};
-
+  
+    try {
+      // Find all documents with the specified username and start date
+      const userForms = await UserForm.find({
+        username: username,
+        date: { $gte: new Date(startdateFormatted) }
+      });
+  
+      // Create an array of dates from the start date to today
+      const today = new Date();
+      const allDates = getDatesInRange(new Date(startdateFormatted), today);
+  
+      // Filter out dates that have a document associated with them
+      const unavailableDates = userForms.map(userForm => userForm.date.toDateString());
+      const missingDates = allDates.filter(date => !unavailableDates.includes(date.toDateString()));
+  
+      // Group the missing dates by month
+      const missingDatesByMonth = missingDates.reduce((accumulator, currentValue) => {
+        const month = currentValue.getMonth();
+        const year = currentValue.getFullYear();
+        const key = `${year}-${month}`; // Group by year-month
+        if (!accumulator[key]) {
+          accumulator[key] = [];
+        }
+        accumulator[key].push(currentValue);
+        return accumulator;
+      }, {});
+  
+      // Get the missing dates for the current month based on the page parameter
+      const months = Object.keys(missingDatesByMonth);
+      const currentMonthIndex = page - 1; // Adjust the page index to start at 0
+      const currentMonthKey = months[currentMonthIndex];
+      const currentMonthMissingDates = missingDatesByMonth[currentMonthKey];
+  
+      // Pagination
+      const pageSize = currentMonthMissingDates.length;
+      const startIndex = 0;
+      const endIndex = pageSize;
+      const missingDatesPage = currentMonthMissingDates.slice(startIndex, endIndex);
+  
+      // Format the missing dates as strings in the format "DD-MM-YYYY"
+      const formattedDates = missingDatesPage.map(date => {
+        const [day, month, year] = date.toLocaleDateString('en-GB').split('/');
+        return `${day}-${month}-${year}`;
+      });
+  
+      // Return the formatted dates and pagination info
+      res.json({
+        success: true,
+        data: formattedDates,
+        pageSize: pageSize
+      })
+      
+    }catch(err){
+        res.send(err);
+    }};  
