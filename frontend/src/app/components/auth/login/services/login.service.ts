@@ -39,6 +39,7 @@ export class LoginService {
     localStorage.removeItem('userName');
     localStorage.removeItem('companyName');
     localStorage.removeItem('role');
+    
 
     return true;
 
@@ -62,8 +63,17 @@ export class LoginService {
         localStorage.setItem('userName',this.user_name);
         localStorage.setItem('companyName',companyName);
         localStorage.setItem('role',role);
+        if(role==='user'){
+          this.router.navigate(['/home']);
 
-        this.router.navigate(['/home']);
+        }
+        else if(role==='manager'){        
+          this.router.navigate(['/managerHome']);
+      }
+        else{
+          this.router.navigate(['/admin']);
+
+        }
       }
   })
   }

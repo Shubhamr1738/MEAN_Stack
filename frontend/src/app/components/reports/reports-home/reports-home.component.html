@@ -1,21 +1,32 @@
-<!-- <div class="container"> -->
+<div class="container">
     <div class="row">   
 <div class="col">
 
         <mat-card>
             <mat-card-content>
-          
-              <div class="list-group">
-                <a class="list-group-item list-group-item-action active">
-                  Remaining Report dates
-                </a>
-                <a  class="list-group-item list-group-item-action"  *ngFor="let date of pendingDates" (click)="setPendingDate(date)">{{date}}</a>
-              </div>
+          <h3> Remaining Report dates</h3>
+          <div class="row" *ngFor="let date of pendingDates">
+            <div class="col">
+              <div class="list-group" >
+                <a class="list-group-item list-group-item-action list-group-item-danger">{{date}}</a><br>
+                <!-- <button nbButton hero status="success">Success</button> -->
 
+              </div>
+            </div>
+            <div class="col"><button class="btn btn-primary" (click)="setPendingDate(date)">fill</button>&nbsp;<button class="btn btn-primary"(click)="ignorePendingDate(date)">ignore</button></div>
+            </div>
+      
             </mat-card-content>
           </mat-card>
 
-
+          <!-- <nb-card>
+            <nb-card-header>
+              <h1 class="h5">Selected date: {{ calendarDate | date }}</h1>
+            </nb-card-header>
+            <nb-card-body>
+              <nb-calendar [(calendarDate)]="calendarDate"></nb-calendar>
+            </nb-card-body>
+          </nb-card> -->
 
         </div>
         
@@ -35,6 +46,7 @@
           </div>
           
           <button type="submit" class="btn btn-primary">Continue</button>
+          <!-- <button nbButton hero status="success">Success</button> -->
         </form>
        
     </div>  
@@ -61,5 +73,5 @@
     </div>
 </div>
  
-<!-- </div> -->
+</div>
   

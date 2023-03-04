@@ -10,11 +10,12 @@ export class ReportHomeService {
   constructor(private http:HttpClient) { }
 
     addDate(){}
-    
+    userName=localStorage.getItem('userName')
     siteStatus(status:any){
       return status;
     }
-    getPendingDates():Observable<any>{
-      return this.http.get(`${URL}/form/pending`)
+    getPendingDates(siteStartDate:any,page:any):Observable<any>{
+      return this.http.get(`${URL}/form/pendingdate/${this.userName}/${siteStartDate}/1`)
     }
+    
 }

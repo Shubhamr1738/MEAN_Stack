@@ -1,0 +1,28 @@
+<div class="container mt-5">
+
+<mat-card>
+<mat-card-content>
+    <h3>{{selectedUserName}}'s Sites</h3>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Sites</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let site of allUsersites; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{site.siteName}}</td>
+        <td><button class="btn btn-primary">Show Data </button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
+      </tr>
+              </tbody>
+  </table>
+    
+</mat-card-content>
+
+</mat-card>
+
+
+</div>

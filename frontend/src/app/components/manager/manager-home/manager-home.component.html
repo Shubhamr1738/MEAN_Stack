@@ -2,7 +2,8 @@
 <h2>Users</h2>
     <mat-card>
       <mat-card-content>
-        <button class="btn btn-primary" routerLink="/signup">Add Users</button><br>
+        <button class="btn btn-primary" routerLink="/signup">Add Users</button>&nbsp;<button class="btn btn-danger" routerLink="/managesite">ManageSite</button>
+        <br>
 
       
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table mt-5" >
@@ -40,7 +41,8 @@
                 <th mat-header-cell *matHeaderCellDef > Actions </th>
                 <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;
                     <button class="btn btn-success">Update</button>&nbsp;
-                    <button class="btn btn-danger" (click)="setUserId(element._id,element.username)" routerLink="/managesite">ManageSite</button></td>
+                    <button class="btn btn-success" (click)="saveSelectedData(element._id,element.username)" routerLink="/managerusersites">User Sites</button>&nbsp;
+                    </td>
                 
             
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

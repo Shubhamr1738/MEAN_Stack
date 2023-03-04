@@ -1,0 +1,27 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import URL from 'src/helper';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ManageusersitesService {
+
+  constructor(private http:HttpClient) { }
+
+  selectedUserId=localStorage.getItem('selectedUserId')
+
+
+  getallSites(selectedUserId:any): Observable<any>{
+    return this.http.get(`${URL}/user/getsitedata/${selectedUserId}`)
+  }
+
+  getSitedataByUserName(userName:any):Observable<any>{
+    return this.http.get(`${URL}/form/getsitebyuname/${userName}`)
+  }
+  deleteSelectedSite(siteId:any){
+    return this.http.delete(`${URL}/user/${this.selectedUserId}/deletesitedata/${siteId}`)
+
+  }
+}

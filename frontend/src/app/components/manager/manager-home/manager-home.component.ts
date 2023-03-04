@@ -15,6 +15,8 @@ export class ManagerHomeComponent implements OnInit {
   displayedColumns: string[] = ['demo-fullname', 'demo-email', 'demo-username','demo-password', 'demo-role',"demo-delete"];
 
   ngOnInit(): void {
+    
+
     this.adminService.getusers().subscribe(data=>{
 
       // this.dataSource=data.data
@@ -36,12 +38,14 @@ export class ManagerHomeComponent implements OnInit {
     })
 
   }
-  setUserId(userid:any,userName:any){
-    this.managserSiteService.setUserId(userid);
-    this.managerService.setSelectedUserName(userName);
+  saveSelectedData(userid:any,userName:any){
+    console.log("seleced user ID: ",userid)
+    // this.managserSiteService.setUserId(userid);
+    this.managerService.setSelectedUserNameandUserID(userName,userid);
     console.log("Username Passed")
     
 
   }
+  
   
 }
