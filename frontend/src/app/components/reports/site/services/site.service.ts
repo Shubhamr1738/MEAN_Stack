@@ -12,11 +12,15 @@ export class SiteService {
   userId=localStorage.getItem('userId');
   userName=localStorage.getItem('userName');
   siteName:any;
+startDate:any
+formFillingDate:any
+
   constructor(private http:HttpClient) { }
 
   AddDailySite(sites:any): Observable<any> {
     console.log('Request is sent!');
     console.log("daily sites and dates :",sites)
+    
     return this.http.post(`${URL}/form/${this.userName}/addsite`,sites)
   }
 
@@ -53,10 +57,25 @@ export class SiteService {
   }
   setSiteName(siteName:any){
     this.siteName=siteName;
+    localStorage.setItem('selectedSiteName',siteName)
+    
+
+  }
+  setStartDate(startDate:any){
+    this.startDate=startDate
 
   }
   getSiteName(){
-    return this.siteName;
+    const siteName=localStorage.getItem('selectedSiteName')
+    return siteName;
   }
-
+  getStartDate(){
+    return this.startDate;
+  }
+  setFormDate(date:any){
+    this.formFillingDate=date
+      }
+      getFormDate(){
+        return this.getFormDate
+      }
 }

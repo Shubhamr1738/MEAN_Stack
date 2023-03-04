@@ -36,6 +36,7 @@ import { ManagerSitesComponent } from './components/manager/manager-sites/manage
 import {MatListModule} from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
+import { ManageusersitesComponent } from './components/manager/manageusersites/manageusersites.component';
 
 
 
@@ -61,7 +62,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReportsHomeComponent,
     ManagerNavComponent,
     ManagerHomeComponent,
-    ManagerSitesComponent
+    ManagerSitesComponent,
+    ManageusersitesComponent
     
   ],
   imports: [
@@ -86,7 +88,7 @@ import {MatSelectModule} from '@angular/material/select';
     ManagerRoutingModule,
     RouterModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
     
     
   ],

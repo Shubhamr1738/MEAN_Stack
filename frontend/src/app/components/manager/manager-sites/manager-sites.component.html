@@ -2,7 +2,7 @@
 <mat-card class="d-flex justify-content-center col-6 mx-auto">
     <mat-card-content>
       <div class="signup-form" >
-        <h2 class="form-title">Add Site to {{this.userName}}</h2>
+        <h2 class="form-title">Add Site</h2>
         <form  [formGroup]="sites" (ngSubmit)="saveSite()">
           <div class="mb-3 mt-3">
             <label  class="form-label">Name of Site</label>
@@ -18,7 +18,7 @@
     </mat-card-content>
   </mat-card><br>
 
-    <h1>{{this.userName}}'s' Sites</h1><br>
+    <h1>Sites</h1><br>
     <mat-card >
       <mat-card-content>
         <table class="table table-hover">
@@ -30,10 +30,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let site of allUserSites; index as i">
+            <tr *ngFor="let site of ManagerSites; index as i">
               <th scope="row">{{i+1}}</th>
               <td>{{site.siteName}}</td>
-              <td><button class="btn btn-primary" (click)="getSitebyUserName()">show Data</button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
+              <td><button class="btn btn-primary" (click)="assignSite(site)">Assign Site </button>&nbsp;<button class="btn btn-primary" >show Data</button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
             </tr>
                     </tbody>
         </table>
@@ -41,22 +41,24 @@
       </mat-card-content>
     </mat-card><br>
     
-    <mat-card *ngIf="selectedSitedata">
+    <mat-card *ngIf="assigningSite">
       <mat-card-content>
-    
+    <h3>Assign Sites to User</h3>
     <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">Id</th>
-          <th scope="col">Site per Date</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Username</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of selectedSitedata; index as i">
+        <tr *ngFor="let data of allUserData; index as i">
           <th scope="row">{{i+1}}</th>
-          <td>{{data.date|date: 'dd-MM-yyyy'}}</td>
-          <td><button class="btn btn-primary">show Data</button>&nbsp;<button class="btn btn-danger" (click)="deleteByDates(data._id)">Delete</button></td>
+          <td>{{data.fullName}}</td>
+          <td>{{data.username}}</td>
+          <td><button class="btn btn-primary" (click)="addSiteToUser(data._id)">Assign</button>&nbsp;</td>
         </tr>
                 </tbody>
     </table>

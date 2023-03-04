@@ -14,12 +14,13 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = [ 'demo-siteName','demo-date',"demo-action"];
 
   ngOnInit(): void {
-    
+    console.log("localStorage.getItem('userName');",localStorage.getItem('userName'))
     this.siteservice.getallSites().subscribe(data => {
       console.log(data);
       this.dataSource=data.data;
       
     });
+    console.log(localStorage.getItem('userName'))
     
   }
 
@@ -34,12 +35,13 @@ export class HomeComponent implements OnInit {
       
     )
   }
-  addsite(id:any,siteName:any){
+  addsite(id:any,siteName:any,startDate:any){
     // localStorage.removeItem('siteId');
     // localStorage.setItem('siteId',id);
     // console.log("in home component",localStorage.getItem('siteId'));
     this.siteservice.setSiteName(siteName);
     this.siteservice.setSiteId(id);
+    this.siteservice.setStartDate(startDate);
   }
 
   

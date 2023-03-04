@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SiteService } from '../site/services/site.service';
 import { ReportHomeService } from './services/report-home.service';
+// import { Date } from '@angular/common';
 
 @Component({
   selector: 'app-reports-home',
@@ -11,21 +12,40 @@ import { ReportHomeService } from './services/report-home.service';
 })
 export class ReportsHomeComponent implements OnInit {
 
-  constructor(private fb:FormBuilder,private router:Router,private reportHomeService:ReportHomeService,private siteService:SiteService) { }
+  constructor(private fb:FormBuilder,private router:Router,private reportHomeService:ReportHomeService,private siteService:SiteService)
+ {
+  this.calendarDate = new Date();
+  }
 dates:any;
 siteStatus:any
 currentDate=new Date();
 pendingDates:any
 site:any
+selectedPage:any
+siteCreationDate:any
+
+calendarDate: Date;
+
+// onDateSelection(event: Event) {
+//   const dateString = event.target.value;
+//   const selectedDate = new Date(dateString);
+//   console.log('Selected date:', selectedDate);
+// }
+
   ngOnInit(): void {
+    
     this.dates = this.fb.group({
-      siteName:this.siteService.getSiteName(),
+      site:this.siteService.getSiteName(),
       date: ['']
   
     });
-    this.reportHomeService.getPendingDates().subscribe(data=>{
+    this.siteCreationDate=this.siteService.getStartDate().substring(0, 10).split("-").reverse().join("-");
+   console.log("StartDate: ",this.siteCreationDate)
+    
+   this.reportHomeService.getPendingDates(this.siteCreationDate,this.selectedPage).subscribe(data=>{
       console.log("Pending Dates",data)
-      this.pendingDates=data.dates
+      this.pendingDates=data.data
+      console.log(this.pendingDates)
     })
    
   }
@@ -41,7 +61,7 @@ confirmStatus(){
 
 setSiteNameandDate(){
 this.siteService.AddDailySite(this.dates.value).subscribe(data=>{
-  console.log("Added date and name of site")
+  console.log("Added date and name of site",this.dates.value)
   localStorage.setItem('dailySiteId',data.siteid)
   this.router.navigate(['/reports']);
 })
@@ -49,18 +69,38 @@ this.siteService.AddDailySite(this.dates.value).subscribe(data=>{
 }
 setPendingDate(pendingdate:any){
   const site={
-    "siteName":this.siteService.getSiteName(),
+    "site":this.siteService.getSiteName(),
     "date":pendingdate
   }
   this.siteService.AddDailySite(site).subscribe(data=>{
     console.log("added pending date succesfully")
-    this.reportHomeService.getPendingDates().subscribe(data=>{
+    this.reportHomeService.getPendingDates(this.siteCreationDate,this.selectedPage).subscribe(data=>{
       console.log("Pending Dates",data)
-      this.pendingDates=data.dates
+      this.pendingDates=data.data
     })
     this.router.navigate(['/reports']);
 
   })
+  
+}
+ignorePendingDate(pendingDate:any){
+  const site={
+    "site":this.siteService.getSiteName(),
+    "date":pendingDate
+  }
+  this.siteService.AddDailySite(site).subscribe(data=>{
+    console.log("added pending date succesfully")
+    this.reportHomeService.getPendingDates(this.siteCreationDate,this.selectedPage).subscribe(data=>{
+      console.log("Pending Dates",data)
+      this.pendingDates=data.data
+    })
+
+  })
+
+}
+getSelectedPage(){
+
+  
 }
 
 }
