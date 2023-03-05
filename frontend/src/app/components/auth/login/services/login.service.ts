@@ -39,7 +39,8 @@ export class LoginService {
     localStorage.removeItem('userName');
     localStorage.removeItem('companyName');
     localStorage.removeItem('role');
-    
+    localStorage.clear()
+    console.log(localStorage.getItem('userName'))
 
     return true;
 

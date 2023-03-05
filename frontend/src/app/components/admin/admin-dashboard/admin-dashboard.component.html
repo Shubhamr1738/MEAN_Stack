@@ -1,11 +1,13 @@
 
-<div class="container">
+
     
-<h2>Admins</h2>
+
+
     <mat-card>
         <mat-card-content>
-            
-           <button class="btn btn-primary" routerLink="/signup">Add Users</button>&nbsp;           
+          <h2>Admins</h2>
+          <button mat-button (click)="openDialog()">Open dialog</button>
+           <!-- <button class="btn btn-primary" routerLink="/signup">Add Users</button>&nbsp;            -->
               
               <table mat-table [dataSource]="adminDatasource" class="mat-elevation-z8 demo-table mt-5" >
               
@@ -44,7 +46,7 @@
 
                 <ng-container matColumnDef="demo-delete">
                   <th mat-header-cell *matHeaderCellDef > Delete User </th>
-                  <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success">Update</button> </td>
+                  <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success" (click)="updateUser(element._id)">Update</button> </td>
                   
                 </ng-container>
               
@@ -52,10 +54,13 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
               
-              
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+
             
         </mat-card-content>
     </mat-card><br>
+    <mat-card class="col-3">
+      <mat-card-content>
     <form>
       <h3>Select Company Name</h3>
       <mat-form-field appearance="fill">
@@ -67,10 +72,12 @@
         </mat-select>
       </mat-form-field>
     </form><br>
-<h2 *ngIf="managerDataSource">Managers</h2>
-    <mat-card>
-      <mat-card-content>
+  </mat-card-content>
+</mat-card><br>
 
+    <mat-card *ngIf="managerDataSource">
+      <mat-card-content>
+        <h2 >Managers</h2>
        
             
             <table mat-table [dataSource]="managerDataSource" class="mat-elevation-z8 demo-table mt-5" >
@@ -106,7 +113,7 @@
               
               <ng-container matColumnDef="demo-delete">
                 <th mat-header-cell *matHeaderCellDef > Delete User </th>
-                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success">Update</button> </td>
+                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success" (click)="updateUser(element._id)">Update</button> </td>
                 
               </ng-container>
             
@@ -118,10 +125,10 @@
           
       </mat-card-content>
   </mat-card>
-  <h2 *ngIf="userdataSource">Users</h2>
-    <mat-card>
+ 
+    <mat-card *ngIf="managerDataSource">
       <mat-card-content>
-       
+        <h2 >Users</h2>
       
             <table mat-table [dataSource]="userdataSource" class="mat-elevation-z8 demo-table mt-5" >
               
@@ -157,7 +164,7 @@
               
               <ng-container matColumnDef="demo-delete">
                 <th mat-header-cell *matHeaderCellDef > Delete User </th>
-                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success">Update</button> </td>
+                <td mat-cell *matCellDef="let element"> <button class="btn btn-danger" (click)="deleteUser(element._id)">Delete</button>&nbsp;<button class="btn btn-success" (click)="updateUser(element._id)">Update</button> </td>
                 
               </ng-container>
             
@@ -169,6 +176,6 @@
           
       </mat-card-content>
   </mat-card>
-</div>       
+    
                     
 

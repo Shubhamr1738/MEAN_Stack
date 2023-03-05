@@ -11,9 +11,9 @@ export class NavBarComponent implements OnInit {
 
   constructor(private loginService:LoginService,private router:Router) { }
   
-userRole:any
+userRole=localStorage.getItem('role')
   ngOnInit(): void {
-   this.userRole=localStorage.getItem('role')
+  //  this.userRole=localStorage.getItem('role')
     console.log("User Role Assigned: ",this.userRole)
     
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { SiteService } from '../site/services/site.service';
 import { ReportHomeService } from './services/report-home.service';
@@ -14,8 +15,7 @@ export class ReportsHomeComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private router:Router,private reportHomeService:ReportHomeService,private siteService:SiteService)
  {
-  this.calendarDate = new Date();
-  }
+    }
 dates:any;
 siteStatus:any
 currentDate=new Date();
@@ -24,8 +24,12 @@ site:any
 selectedPage:any
 siteCreationDate:any
 
-calendarDate: Date;
+selectedDate: Date;
 
+  onDateSelected(event: MatDatepickerInputEvent<Date>) {
+    this.selectedDate = event.value;
+    console.log("event.value",event.value)
+  }
 // onDateSelection(event: Event) {
 //   const dateString = event.target.value;
 //   const selectedDate = new Date(dateString);

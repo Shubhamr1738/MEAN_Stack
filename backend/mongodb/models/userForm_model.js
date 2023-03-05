@@ -34,7 +34,7 @@ const userFormSchema = new mongoose.Schema({
     },
     labourReport: [{
         nameOfAgency: {
-            type: String
+            type: String 
         },
         typeOfAgency:{
             type:String
