@@ -15,8 +15,6 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-.container{
-/* background-image: url("./assets/img/background1.jpg"); */
-}

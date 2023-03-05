@@ -63,7 +63,9 @@ formFillingDate:any
   }
   setStartDate(startDate:any){
     this.startDate=startDate
+
     localStorage.setItem('setStartDate',startDate)
+
 
   }
   getSiteName(){
@@ -73,6 +75,9 @@ formFillingDate:any
   getStartDate(){
     const startDate=localStorage.getItem('setStartDate')
     return startDate;
+
+    return this.startDate;
+
   }
   setFormDate(date:any){
     this.formFillingDate=date
