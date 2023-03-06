@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+    .report-table {
+      font-size: 0.8rem;
+    }
+  
+    .report-table th,
+    .report-table td {
+      padding: 0.3rem;
+    }
+  }

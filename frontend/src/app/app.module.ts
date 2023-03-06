@@ -42,6 +42,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { CalenderComponent } from './components/reports/calender/calender.component';
 import { AdminpopupComponent } from './components/admin/adminpopup/adminpopup.component';
+import { ManagerpopupComponent } from './components/manager/managerpopup/managerpopup.component';
 
 
 
@@ -70,6 +71,7 @@ import { AdminpopupComponent } from './components/admin/adminpopup/adminpopup.co
     ManageusersitesComponent,
     CalenderComponent,
     AdminpopupComponent,
+    ManagerpopupComponent,
     
     
   ],

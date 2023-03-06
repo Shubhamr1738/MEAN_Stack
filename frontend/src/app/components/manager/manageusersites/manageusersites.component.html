@@ -15,7 +15,7 @@
       <tr *ngFor="let site of allUsersites; index as i">
         <th scope="row">{{i+1}}</th>
         <td>{{site.siteName}}</td>
-        <td><button class="btn btn-primary">Show Data </button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
+        <td><button class="btn btn-primary" (click)="showData(site.siteName)">Show Data </button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
       </tr>
               </tbody>
   </table>
@@ -23,6 +23,33 @@
 </mat-card-content>
 
 </mat-card>
+<mat-card *ngIf="selectedUsersSiteData" class="mt-5">
+  <mat-card-content>
+    <h3>Showing data for {{selectedUserSiteName}} site</h3>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        
+        <th scope="col">Sites</th>
+        <th scope="col">Dates</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let site of selectedUsersSiteData; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{site.site}}</td>
+        <td>{{site.date|date:"dd/MM/YYYY"}}</td>
 
+        <td><button class="btn btn-primary" (click)="showDailyData(site._id)">Show Data </button>&nbsp;<button class="btn btn-danger" (click)="deleteSite(site._id)">Delete</button></td>
+      </tr>
+              </tbody>
+  </table>
+      
+  </mat-card-content>
+  
+  </mat-card>
+  
+  
 
-</div>
+</div><br><br>
