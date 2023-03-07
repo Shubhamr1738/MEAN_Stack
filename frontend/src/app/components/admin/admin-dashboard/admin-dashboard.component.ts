@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { AdminpopupComponent } from '../adminpopup/adminpopup.component';
 import{AdminService} from '../services/admin.service'
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,15 +15,44 @@ export class AdminDashboardComponent implements OnInit {
   // @ViewChild(MatTable, {static:false}) table: MatTable<any>;
   // displayedColumns: string[] = ['demo-firstName', 'demo-lastName', 'demo-email', 'demo-username','demo-password', 'demo-sites'];
   userdataSource:any
-  adminDatasource:any
+  // adminDatasource:MatTableDataSource<any>
   managerDataSource:any
   allUserData:any
   selectedCompanyName:any
+  adminDatasource = new MatTableDataSource<any>([]);
+
   constructor(private dataService: AdminService,public dialog: MatDialog) {}
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   displayedColumns: string[] = ['demo-fullname', 'demo-email', 'demo-username','demo-password', 'demo-role',"demo-delete"];
 
+ 
   
-  
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AdminpopupComponent, {
+      width: '500px'
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+  updateUser(userId:any){
+  localStorage.setItem('selectedUserId',userId)
+  console.log("userid has been set")
+  const dialogRef = this.dialog.open(AdminpopupComponent, {
+    width: '500px'
+  });
+
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+  }
+
+
   ngOnInit() {
     this.dataService.getusers().subscribe(data => {
 
@@ -29,8 +61,15 @@ export class AdminDashboardComponent implements OnInit {
       // this.userdataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string ,companyName:string      }) => user.role === 'user');
       this.adminDatasource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'admin');
       // this.managerDataSource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string,companyName:string  }) => user.role === 'manager');
+    
     });
+
+    // this.adminDatasource = new MatTableDataSource<any>(/* your data */);
+    this.adminDatasource.paginator = this.paginator;
   }
+
+
+
 
   deleteUser(id:any){
     console.log(id)

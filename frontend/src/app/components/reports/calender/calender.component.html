@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-3">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active">January</a>
+        <a href="#" class="list-group-item list-group-item-action">February</a>
+        <a href="#" class="list-group-item list-group-item-action">March</a>
+        <a href="#" class="list-group-item list-group-item-action">April</a>
+        <a href="#" class="list-group-item list-group-item-action">May</a>
+        <a href="#" class="list-group-item list-group-item-action">June</a>
+        <a href="#" class="list-group-item list-group-item-action">July</a>
+        <a href="#" class="list-group-item list-group-item-action">August</a>
+        <a href="#" class="list-group-item list-group-item-action">September</a>
+        <a href="#" class="list-group-item list-group-item-action">October</a>
+        <a href="#" class="list-group-item list-group-item-action">November</a>
+        <a href="#" class="list-group-item list-group-item-action">December</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let week of weeks">
+                <ng-container *ngFor="let day of week">
+                  <td>{{ day }}</td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

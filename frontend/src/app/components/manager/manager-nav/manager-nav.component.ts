@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../auth/login/services/login.service';
 
 @Component({
-  selector: 'navbar-dark bg-dark',
+  selector: 'app-manager-navbar',
   templateUrl: './manager-nav.component.html',
   styleUrls: ['./manager-nav.component.css']
 })

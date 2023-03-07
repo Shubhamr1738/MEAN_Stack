@@ -15,4 +15,7 @@ export class RemarkService {
     return this.http.post(`${URL}/form/addremarks/${this.siteId}`,remarkData)
 
   }
+  getRemarks():Observable<any>{
+    return this.http.get(`${URL}/form/getremarks/${this.siteId}`)
+  }
 }
