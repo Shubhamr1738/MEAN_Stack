@@ -6,12 +6,8 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
-
     background-color: #e1b382;
     /* background-color:#c89666; ; */
-
-    background-color: rgb(247, 240, 240);
-
     /* background-image: url("./assets/img/about.jpg");
     background-repeat: no-repeat;
     background-size:cover; */
@@ -20,7 +16,6 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 .container{
@@ -31,8 +26,3 @@ margin-top: 25px;
 border-radius: 10px;
 box-shadow: 0 0 10px #12343b;
 }
-
-
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
-

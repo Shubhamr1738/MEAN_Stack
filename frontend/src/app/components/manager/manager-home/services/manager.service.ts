@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import URL from 'src/helper';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,10 @@ setSelectedUserNameandUserID(userName:any,userId:any){
   getSelectedUserName(){
 return this.userName
   }
-  
+  getUserForManager():Observable<any>{
+    const companyName=localStorage.getItem('companyName')
+    return this.http.get(`${URL}/user/getusersbyrole/user/${companyName}`)
+  }
 
 
 }

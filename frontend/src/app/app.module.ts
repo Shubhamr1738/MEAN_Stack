@@ -37,15 +37,12 @@ import {MatListModule} from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import { ManageusersitesComponent } from './components/manager/manageusersites/manageusersites.component';
-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { CalenderComponent } from './components/reports/calender/calender.component';
 import { AdminpopupComponent } from './components/admin/adminpopup/adminpopup.component';
-
 import { ManagerpopupComponent } from './components/manager/managerpopup/managerpopup.component';
-
 
 
 
@@ -71,19 +68,11 @@ import { ManagerpopupComponent } from './components/manager/managerpopup/manager
     ManagerNavComponent,
     ManagerHomeComponent,
     ManagerSitesComponent,
-
     ManageusersitesComponent,
     CalenderComponent,
     AdminpopupComponent,
     ManagerpopupComponent,
     
-
-
-    ManageusersitesComponent,
-    CalenderComponent,
-    AdminpopupComponent,
-
-
     
   ],
   imports: [
@@ -109,17 +98,9 @@ import { ManagerpopupComponent } from './components/manager/managerpopup/manager
     RouterModule,
     MatListModule,
     MatSelectModule,
-
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-
-
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatInputModule,
-
-
     
     
   ],

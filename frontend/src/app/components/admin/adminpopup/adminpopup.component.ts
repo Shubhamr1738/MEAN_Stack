@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminService } from '../services/admin.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-adminpopup',
   templateUrl: './adminpopup.component.html',
@@ -47,7 +47,11 @@ fullName:string
 
     this.adminServce.updateUser(this.adminUpdateForm.value).subscribe(data=>{
     console.log("data has been Updated SuccesFully")
-    })
+    
+    },error=>{
+
+    }
+    )
     this.dialogRef.close();
   }
   }

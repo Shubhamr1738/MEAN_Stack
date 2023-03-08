@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs';
+import Swal from 'sweetalert2';
 import { ManagerpopupComponent } from '../managerpopup/managerpopup.component';
 import { ManageusersitesService } from './services/manageusersites.service';
 
@@ -48,6 +49,20 @@ selectedUserSiteName:any
       this.allUsersites=data.data
       console.log("data is assigned",this.allUsersites)
     })
+    Swal.fire({
+      icon: 'success',
+      title: 'Deleted Succesfully',
+      text: 'Data has been Deleted Succesfully',
+      
+    })
+    },
+    error=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Something went Wrong',
+        text: 'Please try again',
+        
+      })
     })
 
   }
@@ -85,5 +100,27 @@ selectedUserSiteName:any
       console.log('The dialog was closed');
     });
   }
-
+  deleteDailySites(siteId:any){
+    this.manageUserSiteService.deleteDailySites(siteId).subscribe(data=>{
+      this.manageUserSiteService.getSitedataByUserName(this.selectedUserName).subscribe(data=>{
+        this.selectedUsersSiteData=data.data.filter(user=>user.site ===this.selectedUserSiteName);
+        console.log("getSitebyUserName",this.selectedUsersSiteData)
+      })
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted Succesfully',
+        text: 'Data has been Deleted Succesfully',
+        
+      })
+      },
+      error=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Something went Wrong',
+          text: 'Please try again',
+          
+        })
+      })
+  }
+ 
 }
