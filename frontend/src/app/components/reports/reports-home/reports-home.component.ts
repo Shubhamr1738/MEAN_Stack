@@ -16,6 +16,14 @@ export class ReportsHomeComponent implements OnInit {
   constructor(private fb:FormBuilder,private router:Router,private reportHomeService:ReportHomeService,private siteService:SiteService)
  {
     }
+
+
+    }
+
+  this.calendarDate = new Date();
+  }
+
+
 dates:any;
 siteStatus:any
 currentDate=new Date();
@@ -30,6 +38,19 @@ selectedDate: Date;
     this.selectedDate = event.value;
     console.log("event.value",event.value)
   }
+
+
+selectedDate: Date;
+
+  onDateSelected(event: MatDatepickerInputEvent<Date>) {
+    this.selectedDate = event.value;
+    console.log("event.value",event.value)
+  }
+
+calendarDate: Date;
+
+
+
 // onDateSelection(event: Event) {
 //   const dateString = event.target.value;
 //   const selectedDate = new Date(dateString);

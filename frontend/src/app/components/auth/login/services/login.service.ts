@@ -42,6 +42,12 @@ export class LoginService {
     localStorage.clear()
     console.log(localStorage.getItem('userName'))
 
+
+    localStorage.clear()
+    console.log(localStorage.getItem('userName'))
+
+
+
     return true;
 
 
