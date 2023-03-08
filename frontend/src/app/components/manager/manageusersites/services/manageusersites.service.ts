@@ -11,7 +11,7 @@ export class ManageusersitesService {
   constructor(private http:HttpClient) { }
 
   selectedUserId=localStorage.getItem('selectedUserId')
-
+  selectedDailySiteId=localStorage.getItem('selectedDailySiteId')
 
   getallSites(selectedUserId:any): Observable<any>{
     return this.http.get(`${URL}/user/getsitedata/${selectedUserId}`)
@@ -23,5 +23,11 @@ export class ManageusersitesService {
   deleteSelectedSite(siteId:any){
     return this.http.delete(`${URL}/user/${this.selectedUserId}/deletesitedata/${siteId}`)
 
+  }
+  getDailySiteById():Observable<any>{
+    const siteId=localStorage.getItem('selectedDailySiteId')
+    console.log("siteId has been re assigned to : ",siteId)
+
+    return this.http.get(`${URL}/form/getsite/${siteId}`)
   }
 }

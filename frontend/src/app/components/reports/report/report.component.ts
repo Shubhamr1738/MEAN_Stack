@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CementService } from '../cement-reports/services/cement.service';
 
 import { CementService } from '../cement-reports/services/cement.service';
 
@@ -30,11 +31,13 @@ materialData:any;
 materialConsptionData:any;
 remarkData:any;
 
+
   labourData:any;
   cementData:any;
   materialConsuptionData:any;
   materialdata:any;
   remarkaData:any;
+
 
 
   // @ViewChild(LabourReportsComponent) child:any;

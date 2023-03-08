@@ -23,6 +23,7 @@
     <mat-label>Company</mat-label>
     <input matInput [(ngModel)]="companyName">
   </mat-form-field> -->
+<ng-container>
 
   <form [formGroup]="adminUpdateForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -58,4 +59,5 @@
     <button mat-button (click)="onCancel()">Cancel</button>
     <button mat-button color="primary" (click)="onSubmit()">Submit</button>
   </mat-dialog-actions>
-  
+</ng-container>
+

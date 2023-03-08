@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from '../../admin/services/admin.service';
 import { ManagersiteService } from '../manager-sites/services/managersite.service';
+import { ManagerpopupComponent } from '../managerpopup/managerpopup.component';
 import { ManagerService } from './services/manager.service';
 
 @Component({
@@ -11,7 +13,9 @@ import { ManagerService } from './services/manager.service';
 export class ManagerHomeComponent implements OnInit {
 
   dataSource:any
-  constructor(private adminService:AdminService,private managserSiteService:ManagersiteService,private managerService:ManagerService) {}
+  constructor(private adminService:AdminService,private managserSiteService:ManagersiteService,
+    private managerService:ManagerService,public dialog: MatDialog) {}
+    
   displayedColumns: string[] = ['demo-fullname', 'demo-email', 'demo-username','demo-password', 'demo-role',"demo-delete"];
 
   ngOnInit(): void {
@@ -46,6 +50,19 @@ export class ManagerHomeComponent implements OnInit {
     
 
   }
+  updateUser(userId:any){
+    localStorage.setItem('selectedUserId',userId)
+    localStorage.setItem('popupaction','update')
+    console.log("userid has been set")
+    const dialogRef = this.dialog.open(ManagerpopupComponent, {
+      width: '500px'
+    });
+  
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+    }
   
   
 }

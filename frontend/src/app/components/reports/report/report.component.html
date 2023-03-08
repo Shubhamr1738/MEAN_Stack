@@ -49,6 +49,7 @@
           <h3>CONFIRM DETAILS</h3>
         </ng-template>
       
+<div class="row" style="background-color: rgb(204, 227, 159);">
 
 <div class="row" style="background-color: rgb(204, 227, 159);">
   <div class="col">
@@ -194,12 +195,146 @@
 
 <div class="row">
   <div class="col">
-    <h4>Site Name: {{  SiteData    }} </h4>
+    <h2>Site Name: {{  SiteData    }} </h2>
   </div>
   <div class="col">
-   <h4> Date: {{siteDate}}</h4>
+   <h2> Date: {{siteDate| date:"dd:MM:yyyy"}}</h2>
+   <h2> Day: {{siteDate| date:"EEEE"}}</h2>
   </div>
+ 
 </div>
+<div >
+  <h1>Labour Report</h1>
+  <table class="table table-hover" style="background-color: rgb(99, 99, 105);">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name of Agency</th>
+        <th scope="col">Type of Agency</th>
+        <th scope="col">Skilled</th>
+        <th scope="col">Un Skilled</th>
+        <th scope="col">Workdone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of labourData; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{data.nameOfAgency}}</td>
+        <td>{{data.typeOfAgency}}</td>
+        <td>{{data.skilled}}</td>
+        <td>{{data.unskilled}}</td>
+        <td>{{data.workDone}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h1>Cement Report</h1>
+  <table class="table table-hover" style="background-color: rgb(93, 150, 99);">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">openingBalance</th>
+        <th scope="col">cementReceived</th>
+        <th scope="col">totalStock</th>
+        <th scope="col">consumptionToday</th>
+        <th scope="col">closingBalance</th>
+      </tr>
+    </thead>
+   
+    <tbody>
+      <tr *ngIf="cementData">
+        <th scope="row">{{1}}</th>
+        <td>{{cementData.openingBalance}}</td>
+        <td>{{cementData.cementReceived}}</td>
+        <td>{{cementData.totalStock}}</td>
+        <td>{{cementData.consumptionToday}}</td>
+        <td>{{cementData.closingBalance}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<div>
+  <h1>Material Report</h1>
+  <table class="table table-hover" style="background-color: rgb(147, 147, 202);">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">materialReceived</th>
+        <th scope="col">supplierName</th>
+        <th scope="col">quality</th>
+        <th scope="col">billNo</th>
+        <th scope="col">amount</th>
+        <th scope="col">paid</th>
+        <th scope="col">time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of materialData; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{data.materialReceived}}</td>
+        <td>{{data.supplierName}}</td>
+        <td>{{data.quality}}</td>
+        <td>{{data.billNo}}</td>
+        <td>{{data.paid}}</td>
+        <td>{{data.time}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<div>
+  <h1>Material Consumption Report</h1>
+  <table class="table table-hover" style="background-color: rgb(146, 218, 213);">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">activityName</th>
+        <th scope="col">consumptionMaterial</th>
+        <th scope="col">consumptionQuantity</th>
+        <th scope="col">consumptionUnit</th>
+        
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let data of materialConsptionData; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{data.activityName}}</td>
+        <td>{{data.consumptionMaterial}}</td>
+        <td>{{data.consumptionQuantity}}</td>
+        <td>{{data.consumptionUnit}}</td>
+      
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<div>
+  <h1>Remarks</h1>
+  <table class="table table-hover" style="background-color: rgb(137, 137, 146);">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Remarks</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="remarkData">
+        <th scope="row">{{1}}</th>
+        <td>{{remarkData.remarks}}</td>
+       
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+           <button class="btn btn-primary" routerLink="/home">Submit</button>
+
            <button class="btn btn-primary">Submit</button>
 
       </mat-tab>
@@ -208,3 +343,5 @@
 <!-- 
 <h1 routerLink="labourReport">labourReport</h1>
 <h1 routerLink="cementReport">cementReport</h1> -->
+<br>
+<br>

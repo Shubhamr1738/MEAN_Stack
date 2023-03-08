@@ -1,0 +1,20 @@
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff; /* set the color to white */
+    
+  }
+  /* .nav-item:hover {
+    background-color: #f5f5f5;
+  } */
+  .nav-item a:hover {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 2px solid #ffc107;
+  }
+    a{
+        font-size: large;
+    
+    }
+    .navbar-brand{
+        font-size:x-large;
+        color:#ffc107
+    }
