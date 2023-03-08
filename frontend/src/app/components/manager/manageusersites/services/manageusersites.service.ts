@@ -24,6 +24,10 @@ export class ManageusersitesService {
     return this.http.delete(`${URL}/user/${this.selectedUserId}/deletesitedata/${siteId}`)
 
   }
+  deleteDailySites(siteId:any){
+    return this.http.delete(`${URL}/form/deletesite/${siteId}`)
+
+  }
   getDailySiteById():Observable<any>{
     const siteId=localStorage.getItem('selectedDailySiteId')
     console.log("siteId has been re assigned to : ",siteId)

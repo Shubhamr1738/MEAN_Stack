@@ -43,7 +43,7 @@ allUserData:any
       console.log(data)
 
     })
-    
+   
   }
 
   saveSite(){
@@ -54,18 +54,41 @@ allUserData:any
         this.ManagerSites=data.data
         console.log(data)
   
+      }) 
+      Swal.fire({
+        icon: 'success',
+        title: 'Site has been Added Successfully',
+                
       })
-      
-
+    },error=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Something went Wrong',
+        text: 'Please try again',
+        
+      })
     })
     
   }
   assignSite(siteId:any){
 this.assigningSite=siteId
   }
-  addSiteToUser(userId:any){
+  addSiteToUser(userId:any,userName){
     this.managerSiteService.addSitetoUser(this.assigningSite,userId).subscribe(data=>{
       console.log("Site is assigned to user")
+      Swal.fire({
+        icon: 'success',
+        title: `Site has been assigned to ${userName}`,
+        text: 'Site assigned Succesfully',
+        
+      })
+    },error=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Something went Wrong',
+        text: 'Please try again',
+        
+      })
     })
       
   }
@@ -113,5 +136,4 @@ this.assigningSite=siteId
     })
 
   }
-
 }

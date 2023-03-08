@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminpopupComponent } from '../adminpopup/adminpopup.component';
 import{AdminService} from '../services/admin.service'
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -82,7 +84,19 @@ export class AdminDashboardComponent implements OnInit {
         // this.managerDataSource=data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'manager');
      
       });
-    }
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted Succesfully',
+        text: 'Data has been Deleted Succesfully',
+        
+      })
+    },error =>{console.error(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Something went wrong',
+        text: 'please try again',
+        
+      })} 
     
     )
     

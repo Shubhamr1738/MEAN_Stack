@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 import { AdminService } from '../../admin/services/admin.service';
 import { ManagersiteService } from '../manager-sites/services/managersite.service';
 import { ManagerpopupComponent } from '../managerpopup/managerpopup.component';
@@ -21,11 +22,15 @@ export class ManagerHomeComponent implements OnInit {
   ngOnInit(): void {
     
 
-    this.adminService.getusers().subscribe(data=>{
+    // this.adminService.getusers().subscribe(data=>{
 
-      // this.dataSource=data.data
-      this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
+    //   // this.dataSource=data.data
+    //   this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
 
+    // })
+    this.managerService.getUserForManager().subscribe(data=>{
+      // console.log("Manager Users",data)
+      this.dataSource=data
     })
     
   }
@@ -39,6 +44,20 @@ export class ManagerHomeComponent implements OnInit {
       this.adminService.getusers().subscribe(data=>{
         this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
       })
+      
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted Succesfully',
+          text: 'Data has been Deleted Succesfully',
+          
+        })
+    },error=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong',
+          text: 'Please try again',
+          
+        })
     })
 
   }

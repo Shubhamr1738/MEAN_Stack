@@ -17,8 +17,7 @@
     
     </mat-card-content>
   </mat-card><br>
-
-    <h1>Sites</h1><br>
+      <h1>Sites</h1><br>
     <mat-card >
       <mat-card-content>
         <table class="table table-hover">
@@ -58,7 +57,7 @@
           <th scope="row">{{i+1}}</th>
           <td>{{data.fullName}}</td>
           <td>{{data.username}}</td>
-          <td><button class="btn btn-primary" (click)="addSiteToUser(data._id)">Assign</button>&nbsp;</td>
+          <td><button class="btn btn-primary" (click)="addSiteToUser(data._id,data.username)">Assign</button>&nbsp;</td>
         </tr>
                 </tbody>
     </table>
