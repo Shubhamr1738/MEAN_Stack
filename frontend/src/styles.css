@@ -6,7 +6,8 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #e1b382;
+    /* background-color: #e1b382; */
+
     /* background-color:#c89666; ; */
     /* background-image: url("./assets/img/about.jpg");
     background-repeat: no-repeat;
@@ -21,8 +22,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container{
 /* background-image: url("./assets/img/background1.jpg"); */
 /* background-color: #12343b; */
-background-color: #2d545e;
+/* background-color: #2d545e; */
 margin-top: 25px;
 border-radius: 10px;
-box-shadow: 0 0 10px #12343b;
+/* box-shadow: 0 0 10px #12343b; */
+box-shadow: 0 0 10px #030303;
+
 }

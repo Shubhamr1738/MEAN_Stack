@@ -11,7 +11,7 @@
             <a class="nav-link active" aria-current="home" routerLink="home">Home</a>
           </li>
          
-          <li class="nav-item" *ngIf="userRole==='admin'||userRole==='manager'">
+          <li class="nav-item" *ngIf="userRole==='admin'||userRole==='manager'" >
             <a class="nav-link active"  routerLink="signup">Add Members </a>
           </li>
           <li class="nav-item" *ngIf="!logoutCheckUp">

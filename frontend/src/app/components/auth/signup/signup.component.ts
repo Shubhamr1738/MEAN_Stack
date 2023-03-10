@@ -4,6 +4,7 @@ import {SignupService} from "./services/signup.service"
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupForm:any
-  constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router:Router) { }
+  constructor(private formBuilder: FormBuilder, private signupService: SignupService,private router:Router,private snackBar:MatSnackBar) { }
 userRole=localStorage.getItem('role')
 companyname = localStorage.getItem('companyName') !== "undefined" ? localStorage.getItem('companyName') : "";
   ngOnInit() {
@@ -37,7 +38,17 @@ companyname = localStorage.getItem('companyName') !== "undefined" ? localStorage
       map(res => {
           console.log(res);
           // do something with successful response
+          if(this.userRole==='manager'){          
+            this.router.navigate(['/managerHome']);
+        }else{
           this.router.navigate(['/admin']);
+
+        }
+          this.snackBar.open('Superviser has been created Succesfully', '', {
+            duration: 3000, 
+            horizontalPosition: 'right', // Values can be 'start', 'center', 'end', or 'left', 'right'
+          verticalPosition: 'top' // Values can be 'top', 'bottom'
+          });
       }),
       catchError(error => {
           // do something with error

@@ -1,13 +1,94 @@
 <meta charset="UTF-8">
     <meta name="viewport" >
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Icon -->
     <link rel="stylesheet" href="/assets/signup/fonts/material-icon/css/material-design-iconic-font.min.css">
-
     <!-- Main css -->
     <link rel="stylesheet" href="/assets/signup/css/style.css">
+    <link rel="stylesheet" href="/assets/signup/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <body>
+      <div id="booking" class="section">
+        <div class="section-center">
+          <div class="container">
+            <div class="row">
+              <div class="booking-form">
+                <h2 style="font-weight: 500; font-size: xx-large; color: rgb(0, 0, 0); display: flex; justify-content: center;">Register New User</h2>
+
+                <form [formGroup]="signupForm" (ngSubmit)="signupUser()">
+                  <br>
+                  <div class="form-group">
+                    <div class="form-checkbox" style="display: flex; justify-content: center;">
+                      <label for="admin" *ngIf="userRole==='admin'">
+                        <input type="radio" formControlName="role"  id="admin" value="admin" name="user-type">
+                        <span></span>Admin
+                      </label>
+                      <label for="manager" *ngIf="userRole==='admin'">
+                        <input type="radio" formControlName="role"  id="manager" value="manager" name="user-type">
+                        <span></span>Manager
+                      </label>
+                      <label for="user" *ngIf="userRole==='admin'">
+                        <input type="radio" formControlName="role"  id="user" value="user" name="user-type">
+                        <span></span>User
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span class="form-label">Full Name</span>
+                        <input class="form-control" type="text" formControlName="fullName" id="firstname" placeholder="Full Name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <span class="form-label">Your Email</span>
+                        <input class="form-control" type="text" formControlName="email"  id="email" placeholder="Your Email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label">Username</span>
+                        <input class="form-control" type="text" formControlName="username"  id="username" placeholder="username">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label">Company Name</span>
+                        <input class="form-control" type="text" formControlName="companyName"  id="username" placeholder="Company Name"  required> <!--[placeholder]="companyname" [readonly]="companyname !== undefined"-->
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <span class="form-label">Password</span>
+                        <input class="form-control" type="password" formControlName="password"  id="password" placeholder="New Password">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-100">
+                      <div class="form-btn">
+                        <button class="submit-btn">Register</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+<!--
 <div class="container">
   <div class="signup-content">
       <div class="signup-form">
@@ -60,3 +141,4 @@
       </div>
   </div>
 </div>
+-->

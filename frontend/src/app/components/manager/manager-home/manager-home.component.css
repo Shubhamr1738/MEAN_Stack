@@ -1,20 +1,32 @@
 .demo-table {
-    width: 100%;
-  }
-  
-  .mat-mdc-row .mat-mdc-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  .mat-mdc-row:hover .mat-mdc-cell {
-    border-color: currentColor;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
   h2{
     color: aliceblue;
   }
+
+  .custom-header {
+    background-color: rgb(62, 59, 59);
+    color: #fff;
+    font-weight: bold;
+    font-size: larger;
+  }
+  button{
+    box-shadow: 0 0 5px #0a0a27;
+    /* padding-right: 2%; */margin-right: 2%;
+
+}
