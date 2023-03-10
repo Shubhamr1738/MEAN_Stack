@@ -34,13 +34,12 @@ export class LoginService {
   }
 
   public logout(){
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('userId');
-    // localStorage.removeItem('userName');
-    // localStorage.removeItem('companyName');
-    // localStorage.removeItem('role');
-    localStorage.clear()
-    console.log(localStorage.getItem('userName'))
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('companyName');
+    localStorage.removeItem('role');
+    
 
     return true;
 

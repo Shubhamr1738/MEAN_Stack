@@ -49,7 +49,6 @@ export class LabourReportsComponent implements OnInit {
       this.labourDataService.addLabourReports(this.labours.value,this.SiteID).subscribe(data=>{
         console.log("data added succesfully")
         this.labourDataService.getallLabours(this.SiteID).subscribe(data => {
-
           console.log(data);
           this.dataSource=data.data;
          

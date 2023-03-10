@@ -43,6 +43,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CalenderComponent } from './components/reports/calender/calender.component';
 import { AdminpopupComponent } from './components/admin/adminpopup/adminpopup.component';
 import { ManagerpopupComponent } from './components/manager/managerpopup/managerpopup.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -72,6 +73,7 @@ import { ManagerpopupComponent } from './components/manager/managerpopup/manager
     CalenderComponent,
     AdminpopupComponent,
     ManagerpopupComponent,
+     
     
     
   ],
@@ -101,7 +103,7 @@ import { ManagerpopupComponent } from './components/manager/managerpopup/manager
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    
+    MatSnackBarModule
     
   ],
   schemas: [

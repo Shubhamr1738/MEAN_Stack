@@ -30,12 +30,9 @@ allUserData:any
       
   
     });
-    this.adminService.getusers().subscribe(data=>{
-
-      this.allUserData=data.data
-      console.log("data user ",this.allUserData)
-      this.allUserData = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
-
+    this.managerService.getUserForManager().subscribe(data=>{
+      // console.log("Manager Users",data)
+      this.allUserData=data
     })
     
     this.managerSiteService.getManagerSites().subscribe(data=>{

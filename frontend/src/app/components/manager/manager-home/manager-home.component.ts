@@ -41,8 +41,9 @@ export class ManagerHomeComponent implements OnInit {
   // }
   deleteUser(userid:any){
     this.adminService.deleteUser(userid).subscribe(data=>{
-      this.adminService.getusers().subscribe(data=>{
-        this.dataSource = data.data.filter((user: { id: number, fullName: string, email: string, username: string, role: string }) => user.role === 'user');
+      this.managerService.getUserForManager().subscribe(data=>{
+        // console.log("Manager Users",data)
+        this.dataSource=data
       })
       
         Swal.fire({

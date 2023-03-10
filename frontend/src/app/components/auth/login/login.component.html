@@ -4,7 +4,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -22,15 +22,69 @@
 <!--===============================================================================================-->	
 	<link rel="stylesheet" type="text/css" href="/assets/login/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">
-	
+	<link rel="stylesheet" type="text/css" href="/assets/login/css/util.css">	
 	<link rel="stylesheet" type="text/css" href="/assets/login/css/main.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  
 
-  
+	<body class="img js-fullheight" style="background-image: url(/assets/login/images/bg2.jpg)!important;">
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-6 text-center mb-5">
+						<h2 class="heading-section">Company Name And Logo</h2>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-6 col-lg-4">
+						<div class="login-wrap p-0">
+					  <h3 class="mb-4 text-center">Log In</h3>
+
+					  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="signin-form">
+						  <div class="form-group" data-validate = "Enter username">
+							  <input type="text" class="form-control" formControlName="username" placeholder="Username" required>
+						  </div>
+					<div class="form-group" data-validate="Enter password">
+					  <input id="password-field" formControlName="password" type="password" class="form-control" placeholder="Password" required>
+					</div>
+					<div class="form-group">
+						<button [disabled]="!loginForm.valid" type="submit" class="form-control btn btn-primary submit px-3">Log In</button>
+					</div>
+					<div class="form-group d-md-flex">
+						<!-- <div class="w-50">
+							<label class="checkbox-wrap checkbox-primary">Remember Me
+										  <input type="checkbox" checked>
+										  <span class="checkmark"></span>
+										</label>
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="#" style="color: #fff">Forgot Password</a>
+									</div> -->
+					</div>
+				  </form>
+				  <!-- <p class="w-100 text-center" style="color: #fff;">&mdash; Not Authorised User? &mdash;</p> -->
+				  <!-- <div class="social d-flex text-center">
+					  <a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Home</a>
+				  </div> -->
+				  </div>
+					</div>
+				</div>
+				<br>
+				<p class="w-10 text-center" style="color: #fff;">
+					Design & Developed By <b><u>UniControls Project Intelligence</u></b>. 
+				</p>
+			</div>
+		</section>
+	
+		<script src="/assets/login/js/jquery.min.js"></script>
+	  <script src="/assets/login/js/popper.js"></script>
+	  <script src="/assets/login/js/bootstrap.min.js"></script>
+	  <script src="/assets/login/js/main.js"></script>
+</body>  
+
+<!--
   <div class="limiter">
-		<div class="container-login100" >
+		<div class="container-login100" style="background-image: url('../assets/login/images/bg-01.jpg');">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="loginUser()">
 					<div class="login100-form-title">
@@ -65,10 +119,10 @@
 							Login
 						</button>
 					</div>
-
+<br>
 					<div>
-						<a class="txt1" href="#">
-							Forgot Password?
+						<a class="txt1">
+							Design & Developed By <b><u>UniControls Project Intelligence</u></b>.
 						</a>
 					</div>
 				</form>
@@ -77,21 +131,9 @@
 	</div>
 
   <script ng-src="jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="../assets/login/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="../assets/login/vendor/bootstrap/js/popper.js"></script>
-	<script src="../assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="../assets/login/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="../assets/login/vendor/daterangepicker/moment.min.js"></script>
+  -->
 
-	<script src="../assets/login/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="../assets/login/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script ng-src="js/main.js"></script>
+<!--	<script ng-src="js/main.js"></script>
 
 	<script ng-src="tilt/tilt.jquery.min.js"></script>
 
@@ -102,3 +144,4 @@
 	</script>
 
   </section>
+  -->
